@@ -1,0 +1,341 @@
+openapi: 3.0.3
+info:
+  title: Documents API Cloud Function PakArbi - OpenAPI 3.0
+  description: |-
+    
+  termsOfService: https://github.com/PakArbi/documents
+  contact:
+    email: sidiqfaisal30@gmail.com
+  license:
+    name: Package BackendUser 
+    url: https://pkg.go.dev/github.com/pakarbi/backendUser
+  version: 1.0.11
+externalDocs:
+  description: Website kami Ada di sini
+  url: https://pakarbi.github.io/
+servers:
+  - url: cloud function
+tags:
+  - name: Users
+    description: Pengelolaan Data User
+    externalDocs:
+      description: Deskripsi & SourceCode Program
+      url: https://pakarbi.github.io/backendUser
+  - name: auth
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi & SourceCode Program
+      url: https://pakarbi.github.io/backendUser
+  - name: Mahasiswa
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi & SourceCode Program
+      url: https://pakarbi.github.io/backendUser
+paths:
+  /RegisterUsers:
+    post:
+      tags:
+        - Users
+      summary: Register User Without Token
+      description: Daftar Akun User
+      operationId: authServise
+      requestBody:
+        description: 
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Invalid input
+      security:
+        - petstore_auth:
+            - write:pets
+            - read:pets
+    post:
+      tags:
+        - Users
+      summary: Get Data User Khusus Admin
+      description: Header auth for admin 
+      operationId: GetdataUser
+      requestBody:
+      '200':
+        description: Successful Operation
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+              $ref: '#/components/schemas/responseUser'
+        '400':
+          description: Invalid stauts value
+      security:
+        - Login:
+            - write:pets
+            - read:pets
+  /updatemahasiswa:
+    put:
+      tags:
+        - mahasiswa
+      summary: Update data User khusus Admin
+      description: Header auth for admin
+      operationId: Updatedatamahasiswa
+      requestBody:
+        content:
+          application/json:
+          schema:
+          $ref: '#/components/schemas/updated'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeedMahasiswa/'          
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+            - write:apikey
+            - read:apikey
+  /InsertDataMahasiswa:
+    post:
+      tags:
+        - mahasiswa
+      summary: Insert Data Mahasiswa Khusus Admin
+      description: Header auth for admin
+      operationId: InsertdataMahasiwa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/shemas/Mahasiswa'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/feedMahasiswa'          
+        '400':
+          description: Invalid tag value
+      security:
+        - Login:
+            - write:apiKey
+            - read:apiKey
+  /deleteUser:
+    delete:
+      tags:
+        - Users
+      summary: delete khusus Admin
+      description: Header auth for admin
+      operationId: DeleteUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestMahasiswa'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Time'          
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Invalid status value
+      security:
+        - Login:
+            - write:apiKey
+            - read:apiKey
+components:
+  schemas:
+    user:
+      type: object
+      propertiess:
+      username: 
+        type: string
+        example : KuyTuy
+   password:
+          type: string
+          example: KuyTuy Password
+        role:
+          type: string
+          example: user
+    Response:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: Berhasil Input data
+    responseUser:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: true
+        message:
+          type: string
+          example: berhasil ambil data
+        data:
+          type: object
+          properties:
+            username:
+              type: string
+              example: cihuy
+            password:
+              type: string
+              example: hashed password
+            role:
+              type: string
+              example: user
+    FeedBack:
+          type: object
+          properties:
+            Status:
+              type: integer
+              format: int32
+            Message:
+              type: string
+            Data:
+              type: array
+              items:
+                type: string
+    User:
+          type: object
+          properties:
+            Username:
+              type: string
+              description: The username of the user
+            Password:
+              type: string
+              description: The password of the user
+            Role:
+              type: string
+              description: The role of the user
+
+    ResponseMahasiswa:
+      type: object
+      properties:
+        Status:
+          type: integer
+          format: int32
+        Message:
+          type: string
+        Data:
+          $ref: '#/components/schemas/Mahasiswa'
+    Cred:
+      type: object
+      properties:
+        Status:
+          type: integer
+          format: int32
+        Message:
+          type: string
+
+    RequestUser:
+      type: object
+      properties:
+        Username:
+          type: string
+    Mahasiswa:
+      type: object
+      properties:
+        MahasiswaId:
+          type: string
+        Nama:
+          type: string
+        Email:
+          type: string
+        Prodi:
+          $ref: '#/components/schemas/Prodi'
+        Relation:
+          $ref: '#/components/schemas/User'
+
+    Prodi:
+      type: object
+      properties:
+        ProdId:
+          type: integer
+          format: int32
+        ProdNama:
+          type: string
+
+    Updated:
+      type: object
+      properties:
+        Email:
+          type: string
+        Prodi:
+          type: string
+    Auth:
+      type: object
+      properties:
+        username:
+          type: string
+          example: cihuy
+        password:
+          type: string
+          example: cihuypasworthash
+    AuthResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: false
+        message:
+          type: string
+          example: Selamat Datang
+        token:
+          type: string
+          example: cihuy
+  requestBodies:
+    AuthReq:
+      description: Request Authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Auth'
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AuthResponse'
+  securitySchemes:
+    Login:
+      type: apiKey
+      name: Login
+      in: header
+  
