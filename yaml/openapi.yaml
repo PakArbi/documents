@@ -9,12 +9,12 @@ info:
   license:
     name: Package BackendUser
     url: https://pkg.go.dev/github.com/pakarbi/backendUser
-  version: 1.0.11
+  version: 1.0.12
 externalDocs:
   description: Website kami
   url: https://pakarbi.github.io
 servers:
-  - url: 
+  - url: https://us-central1-project3-403614.cloudfunctions.net/server
 tags:
   - name: Users
     description: Pengelolaan Data User
