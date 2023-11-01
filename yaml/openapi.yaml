@@ -19,17 +19,17 @@ tags:
   - name: Users
     description: Pengelolaan Data User
     externalDocs:
-      description: Deskripsi dan Kode Program
+      description: Deskripsi & SourceCode Program
       url: https://pakarbi.github.io/backendUser
   - name: auth
     description: Auth to Access to API
     externalDocs:
-      description: Deskripsi dan Kode Program
+      description: Deskripsi & SourceCode Program
       url: https://pakarbi.github.io/backendUser
   - name: employee
     description: Auth to Access to API
     externalDocs:
-      description: Deskripsi dan Kode Program
+      description: Deskripsi & SourceCode Program
       url: https://pakarbi.github.io/backendUser
 paths:
   /RegisterUser:
