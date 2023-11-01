@@ -1,110 +1,87 @@
 openapi: 3.0.3
 info:
   title: Documents API Cloud Function PakArbi - OpenAPI 3.0
-  description: |-
-    
+  description: >-
+    Dokumentasi API untuk Aplikasi PakArbi dari Cloud function 
   termsOfService: https://github.com/PakArbi/documents
   contact:
     email: sidiqfaisal30@gmail.com
   license:
-    name: Package BackendUser 
+    name: Package BackendUser
     url: https://pkg.go.dev/github.com/pakarbi/backendUser
   version: 1.0.11
 externalDocs:
-  description: Website kami Ada di sini
-  url: https://pakarbi.github.io/
+  description: Website kami
+  url: https://pakarbi.github.io
 servers:
-  - url: cloud function
+  - url: 
 tags:
   - name: Users
     description: Pengelolaan Data User
     externalDocs:
-      description: Deskripsi & SourceCode Program
+      description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/backendUser
   - name: auth
     description: Auth to Access to API
     externalDocs:
-      description: Deskripsi & SourceCode Program
+      description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/backendUser
-  - name: Mahasiswa
+  - name: employee
     description: Auth to Access to API
     externalDocs:
-      description: Deskripsi & SourceCode Program
+      description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/backendUser
 paths:
-  /RegisterUsers:
+  /RegisterUser:
     post:
       tags:
         - Users
       summary: Register User Without Token
       description: Daftar Akun User
-      operationId: authServise
+      operationId: authService
       requestBody:
-        description: 
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Pet'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Pet'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Pet'
-        required: true
+              $ref: '#/components/schemas/user'
       responses:
         '200':
-          description: Successful operation
+          description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Pet'          
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/Pet'
-        '400':
-          description: Invalid ID supplied
-        '404':
-          description: Pet not found
+                $ref: '#/components/schemas/Response'
         '405':
           description: Invalid input
-      security:
-        - petstore_auth:
-            - write:pets
-            - read:pets
+  /Login:
     post:
       tags:
-        - Users
-      summary: Get Data User Khusus Admin
-      description: Header auth for admin 
-      operationId: GetdataUser
+        - auth
+      summary: Login get Token
+      description: Login and Get User Token
+      operationId: authService
       requestBody:
-      '200':
-        description: Successful Operation
         content:
           application/json:
             schema:
-              type: array
-              items:
-              $ref: '#/components/schemas/responseUser'
-        '400':
-          description: Invalid stauts value
-      security:
-        - Login:
-            - write:pets
-            - read:pets
-  /updatemahasiswa:
-    put:
+              $ref: '#/components/schemas/Auth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
+
+  /GetUserWithToken:
+    get:
       tags:
-        - mahasiswa
-      summary: Update data User khusus Admin
-      description: Header auth for admin
-      operationId: Updatedatamahasiswa
-      requestBody:
-        content:
-          application/json:
-          schema:
-          $ref: '#/components/schemas/updated'
+        - Users
+      summary: Get Data User Khusus Admin
+      description: Header auth for admin only
+      operationId: GetdataUser
       responses:
         '200':
           description: successful operation
@@ -113,25 +90,25 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/FeedMahasiswa/'          
+                  $ref: '#/components/schemas/responseUser'
         '400':
           description: Invalid status value
       security:
         - Login:
-            - write:apikey
-            - read:apikey
-  /InsertDataMahasiswa:
-    post:
+          - write:apiKey
+          - read:apiKey
+  /updatedataemployee:
+    put:
       tags:
         - mahasiswa
-      summary: Insert Data Mahasiswa Khusus Admin
-      description: Header auth for admin
-      operationId: InsertdataMahasiwa
+      summary: Update data User Khusus Admin
+      description: Header auth for admin only
+      operationId: UpdatedataMahasiswa
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/shemas/Mahasiswa'
+              $ref: '#/components/schemas/Updated'
       responses:
         '200':
           description: successful operation
@@ -140,51 +117,78 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/feedMahasiswa'          
+                  $ref: '#/components/schemas/FeedMahasiswa'
         '400':
-          description: Invalid tag value
+          description: Invalid status value
       security:
         - Login:
-            - write:apiKey
-            - read:apiKey
-  /deleteUser:
+          - write:apiKey
+          - read:apiKey
+  /InsertDataEmployee:
+    post:
+      tags:
+        - mahasiswa
+      summary: Insert data Mahasiswa Khusus Admin
+      description: Header auth for admin only
+      operationId: InsertdataMahasiswa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeedMahasiswa'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+  /deleteuser:
     delete:
       tags:
         - Users
-      summary: delete khusus Admin
-      description: Header auth for admin
+      summary: delete Khusus Admin
+      description: Header auth for admin only
       operationId: DeleteUsers
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestMahasiswa'
+              $ref: '#/components/schemas/RequestUsers'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Time'          
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cred'
         '400':
-          description: Invalid ID supplied
-        '404':
           description: Invalid status value
       security:
         - Login:
-            - write:apiKey
-            - read:apiKey
+          - write:apiKey
+          - read:apiKey
 components:
   schemas:
     user:
       type: object
-      propertiess:
-      username: 
-        type: string
-        example : KuyTuy
-   password:
+      properties:
+        username:
           type: string
-          example: KuyTuy Password
+          example : Kuytuy
+        password:
+          type: string
+          example: KuytuyPass
         role:
           type: string
           example: user
@@ -197,7 +201,7 @@ components:
         message:
           type: string
           example: Berhasil Input data
-    responseUser:
+    FeedMahasiswa:
       type: object
       properties:
         status:
@@ -205,7 +209,7 @@ components:
           example: true
         message:
           type: string
-          example: berhasil ambil data
+          example: berhasil mengambil data
         data:
           type: object
           properties:
@@ -243,7 +247,7 @@ components:
               type: string
               description: The role of the user
 
-    ResponseMahasiswa:
+    ResponseEmployee:
       type: object
       properties:
         Status:
@@ -252,7 +256,7 @@ components:
         Message:
           type: string
         Data:
-          $ref: '#/components/schemas/Mahasiswa'
+          $ref: '#/components/schemas/Employee'
     Cred:
       type: object
       properties:
@@ -262,12 +266,12 @@ components:
         Message:
           type: string
 
-    RequestUser:
+    RequestUsers:
       type: object
       properties:
         Username:
           type: string
-    Mahasiswa:
+    Employee:
       type: object
       properties:
         MahasiswaId:
@@ -275,10 +279,10 @@ components:
         Nama:
           type: string
         Email:
-          type: string
+          type: string        
         Prodi:
           $ref: '#/components/schemas/Prodi'
-        Relation:
+        Account:
           $ref: '#/components/schemas/User'
 
     Prodi:
@@ -295,17 +299,17 @@ components:
       properties:
         Email:
           type: string
-        Prodi:
+        Phone:
           type: string
     Auth:
       type: object
       properties:
         username:
           type: string
-          example: cihuy
+          example: Kuytuy
         password:
           type: string
-          example: cihuypasworthash
+          example: Kuytuy
     AuthResponse:
       type: object
       properties:
@@ -338,4 +342,3 @@ components:
       type: apiKey
       name: Login
       in: header
-  
