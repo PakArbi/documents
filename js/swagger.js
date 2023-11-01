@@ -1,4 +1,4 @@
-import {setSwagger,UIData} from './swagfunction.js';
+import {setSwagger,UIData} from './swagfuction';
 
 
 window.ui = UIData;
