@@ -4,7 +4,7 @@ export let URLData = "https://raw.githubusercontent.com/pakarbi/documents/main/y
 
 export const UIData = SwaggerUIBundle({
     url: URLData, //Location of Open API spec in the repo
-    dom_id: '#swagger-ui',
+    dom_id: '#ui-swagger',
     deepLinking: true,
     presets: [
         SwaggerUIBundle.presets.apis,
