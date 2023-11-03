@@ -1,41 +1,41 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Cloud Function GIS- OpenAPI 3.0
+  title: Documents API Cloud Function PakArbi - OpenAPI 3.0
   description: >-
-    Dokumentasi API untuk Matakuliah GIS
-  termsOfService: https://github.com/KimseokGIS
+    Dokumentasi API untuk Aplikasi PakArbi dari Cloud function 
+  termsOfService: https://github.com/PakArbi/documents
   contact:
-    email: rofinafiisr@gmail.com
+    email: sidiqfaisal30@gmail.com
   license:
-    name: UsersBackend Package
-    url: https://pkg.go.dev/github.com/rofinafiin/gcfbackend
-  version: 1.0.11
+    name: Package BackendUser
+    url: https://pkg.go.dev/github.com/pakarbi/backendUser
+  version: 1.0.12
 externalDocs:
-  description: Swagger
-  url: https://kimseokgis.github.io
+  description: Website kami
+  url: https://pakarbi.github.io
 servers:
-  - url: https://asia-southeast2-gis-project-401902.cloudfunctions.net
+  - url: https://us-central1-project3-403614.cloudfunctions.net/server
 tags:
+  - name: Users
+    description: Pengelolaan Data User
+    externalDocs:
+      description: Deskripsi & SourceCode Program
+      url: https://pakarbi.github.io/backendUser
   - name: auth
-    description: Authentikasi
+    description: Auth to Access to API
     externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://github.com/rofinafiin/UsersBackend
-  - name: register
-    description: Register Account
+      description: Deskripsi & SourceCode Program
+      url: https://pakarbi.github.io/backendUser
+  - name: employee
+    description: Auth to Access to API
     externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://github.com/rofinafiin/UsersBackend
-  - name: data
-    description: Data Untuk akses GIS
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://github.com/rofinafiin/UsersBackend
+      description: Deskripsi & SourceCode Program
+      url: https://pakarbi.github.io/backendUser
 paths:
-  /RegisterGeo:
+  /RegisterUser:
     post:
       tags:
-        - register
+        - Users
       summary: Register User Without Token
       description: Daftar Akun User
       operationId: authService
@@ -53,7 +53,7 @@ paths:
                 $ref: '#/components/schemas/Response'
         '405':
           description: Invalid input
-  /LoginGeo:
+  /Login:
     post:
       tags:
         - auth
@@ -74,39 +74,14 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /Updategeo:
-    put:
-      tags:
-        - data
-      summary: Update data geo
-      description: Update data nama by volume geo
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/bodycord'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Response'
-        '405':
-          description: Invalid input          
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
 
-  /GetAllgeojson:
+  /GetUserWithToken:
     get:
       tags:
-        - data
-      summary: Get Data Geojson
-      description: Header auth 
-      operationId: GetdataGeojson
+        - Users
+      summary: Get Data User Khusus Admin
+      description: Header auth for admin only
+      operationId: GetdataUser
       responses:
         '200':
           description: successful operation
@@ -122,7 +97,87 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-
+  /updatedataemployee:
+    put:
+      tags:
+        - mahasiswa
+      summary: Update data User Khusus Admin
+      description: Header auth for admin only
+      operationId: UpdatedataMahasiswa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Updated'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeedMahasiswa'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+  /InsertDataEmployee:
+    post:
+      tags:
+        - mahasiswa
+      summary: Insert data Mahasiswa Khusus Admin
+      description: Header auth for admin only
+      operationId: InsertdataMahasiswa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeedMahasiswa'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+  /deleteuser:
+    delete:
+      tags:
+        - Users
+      summary: delete Khusus Admin
+      description: Header auth for admin only
+      operationId: DeleteUsers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUsers'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cred'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
 components:
   schemas:
     user:
@@ -130,10 +185,13 @@ components:
       properties:
         username:
           type: string
-          example : cihuy
+          example : Kuytuy
         password:
           type: string
-          example: cihuypaswort
+          example: KuytuyPass
+        role:
+          type: string
+          example: user
     Response:
       type: object
       properties:
@@ -143,7 +201,7 @@ components:
         message:
           type: string
           example: Berhasil Input data
-    responseUser:
+    FeedMahasiswa:
       type: object
       properties:
         status:
@@ -151,40 +209,107 @@ components:
           example: true
         message:
           type: string
-          example: berhasil ambil data
+          example: berhasil mengambil data
         data:
           type: object
           properties:
             username:
               type: string
-              example: cihuy
+              example: sankuy
             password:
               type: string
               example: hashed password
             role:
               type: string
               example: user
+    FeedBack:
+          type: object
+          properties:
+            Status:
+              type: integer
+              format: int32
+            Message:
+              type: string
+            Data:
+              type: array
+              items:
+                type: string
+    User:
+          type: object
+          properties:
+            Username:
+              type: string
+              description: The username of the user
+            Password:
+              type: string
+              description: The password of the user
+            Role:
+              type: string
+              description: The role of the user
+
+    ResponseEmployee:
+      type: object
+      properties:
+        Status:
+          type: integer
+          format: int32
+        Message:
+          type: string
+        Data:
+          $ref: '#/components/schemas/Employee'
+    Cred:
+      type: object
+      properties:
+        Status:
+          type: integer
+          format: int32
+        Message:
+          type: string
+
+    RequestUsers:
+      type: object
+      properties:
+        Username:
+          type: string
+    Employee:
+      type: object
+      properties:
+        MahasiswaId:
+          type: string
+        Nama:
+          type: string
+        Email:
+          type: string        
+        Prodi:
+          $ref: '#/components/schemas/Prodi'
+        Account:
+          $ref: '#/components/schemas/User'
+
+    Prodi:
+      type: object
+      properties:
+        ProdId:
+          type: integer
+          format: int32
+        ProdNama:
+          type: string
+
+    Updated:
+      type: object
+      properties:
+        Email:
+          type: string
+        Phone:
+          type: string
     Auth:
       type: object
       properties:
         username:
           type: string
-          example: cihuy
+          example: Kuytuy
         password:
           type: string
-          example: cihuypasworthash
-    bodycord:
-      type: object
-      properties:
-        type:
-          type: string
-          example: polygon
-        name:
-          type: string
-          example: rofi
-        volume:
-          type: string
-          example: "1"
+          example: Kuytuy
     AuthResponse:
       type: object
       properties:
@@ -196,7 +321,7 @@ components:
           example: Selamat Datang
         token:
           type: string
-          example: cihuy
+          example: sankuy
   requestBodies:
     AuthReq:
       description: Request Authentication
@@ -217,5 +342,3 @@ components:
       type: apiKey
       name: Login
       in: header
-
-      
