@@ -9,7 +9,7 @@ info:
   license:
     name: Package BackendUser
     url: https://pkg.go.dev/github.com/pakarbi/backendUser
-  version: 1.0.11
+  version: 1.0.12
 externalDocs:
   description: Website kami
   url: https://pakarbi.github.io
@@ -26,7 +26,7 @@ tags:
     externalDocs:
       description: Deskripsi & SourceCode Program
       url: https://pakarbi.github.io/backendUser
-  - name: mahasiswa
+  - name: employee
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi & SourceCode Program
@@ -135,7 +135,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Mahasiswa'
+              $ref: '#/components/schemas/Employee'
       responses:
         '200':
           description: successful operation
@@ -171,7 +171,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Time'
+                  $ref: '#/components/schemas/Cred'
         '400':
           description: Invalid status value
       security:
@@ -247,7 +247,7 @@ components:
               type: string
               description: The role of the user
 
-    FeedMahasiswa:
+    ResponseEmployee:
       type: object
       properties:
         Status:
@@ -256,8 +256,8 @@ components:
         Message:
           type: string
         Data:
-          $ref: '#/components/schemas/Mahasiswa'
-    Time:
+          $ref: '#/components/schemas/Employee'
+    Cred:
       type: object
       properties:
         Status:
@@ -271,7 +271,7 @@ components:
       properties:
         Username:
           type: string
-    Mahasiswa:
+    Employee:
       type: object
       properties:
         MahasiswaId:
