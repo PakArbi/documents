@@ -26,7 +26,7 @@ tags:
     externalDocs:
       description: Deskripsi & SourceCode Program
       url: https://pakarbi.github.io/backendUser
-  - name: employee
+  - name: mahasiswa
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi & SourceCode Program
@@ -97,7 +97,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /updatedataemployee:
+  /updatedatamahasiswa:
     put:
       tags:
         - mahasiswa
@@ -124,7 +124,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /InsertDataEmployee:
+  /InsertDataMahasiswa:
     post:
       tags:
         - mahasiswa
@@ -135,7 +135,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Employee'
+              $ref: '#/components/schemas/Mahasiswa'
       responses:
         '200':
           description: successful operation
@@ -171,7 +171,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Cred'
+                  $ref: '#/components/schemas/Time'
         '400':
           description: Invalid status value
       security:
@@ -215,7 +215,7 @@ components:
           properties:
             username:
               type: string
-              example: cihuy
+              example: sankuy
             password:
               type: string
               example: hashed password
@@ -247,7 +247,7 @@ components:
               type: string
               description: The role of the user
 
-    ResponseEmployee:
+    ResponseMahasiswa:
       type: object
       properties:
         Status:
@@ -256,7 +256,7 @@ components:
         Message:
           type: string
         Data:
-          $ref: '#/components/schemas/Employee'
+          $ref: '#/components/schemas/Mahasiswa'
     Cred:
       type: object
       properties:
@@ -271,7 +271,7 @@ components:
       properties:
         Username:
           type: string
-    Employee:
+    Mahasiswa:
       type: object
       properties:
         MahasiswaId:
@@ -306,10 +306,10 @@ components:
       properties:
         username:
           type: string
-          example: Kuytuy
+          example: Sankuy
         password:
           type: string
-          example: Kuytuy
+          example: Sankuy
     AuthResponse:
       type: object
       properties:
