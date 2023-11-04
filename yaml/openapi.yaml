@@ -257,7 +257,7 @@ components:
           type: string
         Data:
           $ref: '#/components/schemas/Mahasiswa'
-    Cred:
+    Time:
       type: object
       properties:
         Status:
