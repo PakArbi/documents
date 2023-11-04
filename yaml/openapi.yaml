@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
   title: Documents API Cloud Function PakArbi - OpenAPI 3.0
-  description: >-
-    Dokumentasi API untuk Aplikasi PakArbi dari Cloud function 
+  description: >
+    - Dokumentasi API untuk Aplikasi PakArbi dari Cloud function 
   termsOfService: https://github.com/PakArbi/documents
   contact:
     email: sidiqfaisal30@gmail.com
@@ -257,7 +257,7 @@ components:
           type: string
         Data:
           $ref: '#/components/schemas/Mahasiswa'
-    Cred:
+    Time:
       type: object
       properties:
         Status:
