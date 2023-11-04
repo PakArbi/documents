@@ -97,7 +97,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /updatedatamahasiswa:
+  /updatedataemployee:
     put:
       tags:
         - mahasiswa
@@ -124,7 +124,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /InsertDataMahasiswa:
+  /InsertDataEmployee:
     post:
       tags:
         - mahasiswa
@@ -171,7 +171,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Time'
+                  $ref: '#/components/schemas/Cred'
         '400':
           description: Invalid status value
       security:
@@ -271,7 +271,7 @@ components:
       properties:
         Username:
           type: string
-    Employee:
+    Mahasiswa:
       type: object
       properties:
         MahasiswaId:
