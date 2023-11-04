@@ -1,15 +1,15 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
-  title: Documents API Cloud Function PakArbi - OpenAPI 3.1.0
-  description: >
-    - Dokumentasi API untuk Aplikasi PakArbi dari Cloud function 
+  title: Documents API Cloud Function PakArbi - OpenAPI 3.0
+  description: >-
+    Dokumentasi API untuk Aplikasi PakArbi dari Cloud function 
   termsOfService: https://github.com/PakArbi/documents
   contact:
     email: sidiqfaisal30@gmail.com
   license:
     name: Package BackendUser
     url: https://pkg.go.dev/github.com/pakarbi/backendUser
-  version: 1.0.11
+  version: 1.0.12
 externalDocs:
   description: Website kami
   url: https://pakarbi.github.io
@@ -215,7 +215,7 @@ components:
           properties:
             username:
               type: string
-              example: sankuy
+              example: cihuy
             password:
               type: string
               example: hashed password
@@ -271,7 +271,7 @@ components:
       properties:
         Username:
           type: string
-    Mahasiswa:
+    Employee:
       type: object
       properties:
         MahasiswaId:
@@ -306,10 +306,10 @@ components:
       properties:
         username:
           type: string
-          example: sankuy
+          example: Kuytuy
         password:
           type: string
-          example: Sankuy
+          example: Kuytuy
     AuthResponse:
       type: object
       properties:
@@ -321,7 +321,7 @@ components:
           example: Selamat Datang
         token:
           type: string
-          example: sankuy
+          example: cihuy
   requestBodies:
     AuthReq:
       description: Request Authentication
