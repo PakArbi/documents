@@ -21,22 +21,17 @@ tags:
     externalDocs:
       description: Deskripsi & SourceCode Program
       url: https://pakarbi.github.io/backendUser
-  - name: Mahasiswa
-    description: Pengelolaan Data User
-    externalDocs:
-      description: Deskripsi & SourceCode Program
-      url: https://pakarbi.github.io/backendUser
-  - name: Dosen
-    description: Pengelolaan Data User
-    externalDocs:
-      description: Deskripsi & SourceCode Program
-      url: https://pakarbi.github.io/backendUser
   - name: auth
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi & SourceCode Program
       url: https://pakarbi.github.io/backendUser
-  - name: Admin
+  - name: Dosen
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi & SourceCode Program
+      url: https://pakarbi.github.io/backendUser
+  - name: Mahasiswwa
     description: Auth to Access to API
     externalDocs:
       description: Deskripsi & SourceCode Program
@@ -107,55 +102,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /GetAdminWithToken:
-    get:
-      tags:
-        - Admin
-      summary: Get Data User Khusus Admin
-      description: Header auth for admin only
-      operationId: GetdataAdmin
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/responseAdmin'
-        '400':
-          description: Invalid status value
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
-  /updatedatamahasiswa:
-    put:
-      tags:
-        - mahasiswa
-      summary: Update data User Khusus Admin
-      description: Header auth for admin only
-      operationId: UpdatedataMahasiswa
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Updated'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/FeedMahasiswa'
-        '400':
-          description: Invalid status value
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
+
   /InsertDataMahasiswa:
     post:
       tags:
@@ -183,7 +130,7 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-  /updatedatadosen:
+  /updatedataDosen:
     put:
       tags:
         - Dosen
@@ -366,6 +313,8 @@ components:
           type: string
         Email:
           type: string        
+        Phone:
+          type: string
         Prodi:
           $ref: '#/components/schemas/Prodi'
         Account:
