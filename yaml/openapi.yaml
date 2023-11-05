@@ -16,7 +16,7 @@ externalDocs:
 servers:
   - url: https://us-central1-project3-403614.cloudfunctions.net/server
 tags:
-  - name: Users
+  - name: Users & Admin
     description: Pengelolaan Data User
     externalDocs:
       description: Deskripsi & SourceCode Program
@@ -49,6 +49,27 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/user'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+  /RegisterAdmin:
+    post:
+      tags:
+        - Admin
+      summary: Register Admin Without Token
+      description: Daftar Akun Admin
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/admin'
       responses:
         '200':
           description: successful operation
@@ -106,7 +127,7 @@ paths:
   /InsertDataMahasiswa:
     post:
       tags:
-        - mahasiswa
+        - Mahasiswa
       summary: Insert data Mahasiswa Khusus Admin
       description: Header auth for admin only
       operationId: InsertdataMahasiswa
@@ -133,7 +154,7 @@ paths:
   /updatedataMahasiswa:
     put:
       tags:
-        - Dosen
+        - Mahasiswa
       summary: Update data User Khusus Admin
       description: Header auth for admin only
       operationId: UpdatedataDosen
