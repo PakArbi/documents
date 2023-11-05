@@ -14,7 +14,7 @@ externalDocs:
   description: Website kami
   url: https://pakarbi.github.io
 servers:
-  - url: https://us-central1-project3-403614.cloudfunctions.net/server
+  - url: https://asia-southeast2-project3-403614.cloudfunctions.net/Login
 tags:
   - name: Users & Admin
     description: Pengelolaan Data User
@@ -55,13 +55,21 @@ paths:
           content:
             application/json:
               schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+                password confirmation:
+                  type: password
                 $ref: '#/components/schemas/Response'
         '405':
           description: Invalid input
   /RegisterAdmin:
     post:
       tags:
-        - Admin
+        - Users & Admin
       summary: Register Admin Without Token
       description: Daftar Akun Admin
       operationId: authService
