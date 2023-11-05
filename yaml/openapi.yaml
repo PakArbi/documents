@@ -40,7 +40,7 @@ paths:
   /RegisterUser:
     post:
       tags:
-        - Users
+        - Users & Admin
       summary: Register User Without Token
       description: Daftar Akun User
       operationId: authService
@@ -104,7 +104,7 @@ paths:
   /GetUserWithToken:
     get:
       tags:
-        - Users
+        - Users & Admin
       summary: Get Data User Khusus Admin
       description: Header auth for admin only
       operationId: GetdataUser
@@ -235,7 +235,7 @@ paths:
   /deleteuser:
     delete:
       tags:
-        - Users
+        - Users & Admin
       summary: delete Khusus Admin
       description: Header auth for admin only
       operationId: DeleteUsers
