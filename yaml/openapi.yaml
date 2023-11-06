@@ -399,10 +399,10 @@ components:
       properties:
         username:
           type: string
-          example: Sankuy
+          example: sankuy
         password:
           type: string
-          example: Sankuypass
+          example: sankuypass
     AuthResponse:
       type: object
       properties:
