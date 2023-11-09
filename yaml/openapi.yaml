@@ -87,7 +87,7 @@ paths:
                 $ref: '#/components/schemas/Response'
         '405':
           description: Invalid input
-  /Login:
+  /login:
     post:
       tags:
         - auth
