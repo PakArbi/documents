@@ -8,7 +8,7 @@ info:
     email: sidiqfaisal30@gmail.com
   license:
     name: Package BackendUser
-    url: https://pkg.go.dev/github.com/pakarbi/backendUser
+    url: https://pkg.go.dev/github.com/PakArbi/pasetobackend
   version: 1.0.11
 externalDocs:
   description: Website kami
@@ -16,78 +16,17 @@ externalDocs:
 servers:
   - url: https://asia-southeast2-project3-403614.cloudfunctions.net/
 tags:
-  - name: Users & Admin
+  - name: auth
+    description: Authentikasi
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pakarbi.github.io/pasetobackend
     description: Pengelolaan Data User
     externalDocs:
-      description: Deskripsi & SourceCode Program
-      url: https://pakarbi.github.io/backendUser
-  - name: auth
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi & SourceCode Program
-      url: https://pakarbi.github.io/backendUser
-  - name: Dosen
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi & SourceCode Program
-      url: https://pakarbi.github.io/backendUser
-  - name: Mahasiswa
-    description: Auth to Access to API
-    externalDocs:
-      description: Deskripsi & SourceCode Program
-      url: https://pakarbi.github.io/backendUser
+      description: Deskripsi dan Kode Program
+      url: https://pakarbi.github.io/pasetobackend
 paths:
-  /RegisterUser:
-    post:
-      tags:
-        - Users & Admin
-      summary: Register User Without Token
-      description: Daftar Akun User
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/user'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-              type: object
-              properties:
-                username:
-                  type: string
-                password:
-                  type: string
-                password confirmation:
-                  type: password
-                $ref: '#/components/schemas/Response'
-        '405':
-          description: Invalid input
-  /RegisterAdmin:
-    post:
-      tags:
-        - Users & Admin
-      summary: Register Admin Without Token
-      description: Daftar Akun Admin
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/admin'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Response'
-        '405':
-          description: Invalid input
-  /login:
+  /Login:
     post:
       tags:
         - auth
@@ -108,179 +47,34 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-
-  /GetUserWithToken:
-    get:
-      tags:
-        - Users & Admin
-      summary: Get Data User Khusus Admin
-      description: Header auth for admin only
-      operationId: GetdataUser
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/responseUser'
-        '400':
-          description: Invalid status value
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
-
-  /InsertDataMahasiswa:
+  /Register:
     post:
       tags:
-        - Mahasiswa
-      summary: Insert data Mahasiswa Khusus Admin
-      description: Header auth for admin only
-      operationId: InsertdataMahasiswa
+        - User
+      summary: Insert User
+      description: data username
+      operationId: authService
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Mahasiswa'
+              $ref: '#/components/schemas/user'
       responses:
         '200':
           description: successful operation
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/FeedMahasiswa'
-        '400':
-          description: Invalid status value
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input          
       security:
         - Login:
           - write:apiKey
           - read:apiKey
-  /updatedataMahasiswa:
-    put:
-      tags:
-        - Mahasiswa
-      summary: Update data User Khusus Admin
-      description: Header auth for admin only
-      operationId: UpdatedataDosen
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Updated'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/FeedMahasiswa'
-        '400':
-          description: Invalid status value
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
-  /updatedataDosen:
-    put:
-      tags:
-        - Dosen
-      summary: Update data User Khusus Admin
-      description: Header auth for admin only
-      operationId: UpdatedataDosen
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Updated'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/FeedDosen'
-        '400':
-          description: Invalid status value
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
-  /InsertDataDosen:
-    post:
-      tags:
-        - Dosen
-      summary: Insert data Dosen Khusus Admin
-      description: Header auth for admin only
-      operationId: InsertdataDosen
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Dosen'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/FeedDosen'
-        '400':
-          description: Invalid status value
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
-  /deleteuser:
-    delete:
-      tags:
-        - Users & Admin
-      summary: delete Khusus Admin
-      description: Header auth for admin only
-      operationId: DeleteUsers
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestUsers'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Time'
-        '400':
-          description: Invalid status value
-      security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
+
 components:
   schemas:
-    user:
-      type: object
-      properties:
-        username:
-          type: string
-          example : Kuytuy
-        password:
-          type: string
-          example: KuytuyPass
-        role:
-          type: string
-          example: user
     Response:
       type: object
       properties:
@@ -290,119 +84,15 @@ components:
         message:
           type: string
           example: Berhasil Input data
-    FeedMahasiswa:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: true
-        message:
-          type: string
-          example: berhasil mengambil data
-        data:
-          type: object
-          properties:
-            username:
-              type: string
-              example: sankuy
-            password:
-              type: string
-              example: hashed password
-            role:
-              type: string
-              example: user
-    FeedBack:
-          type: object
-          properties:
-            Status:
-              type: integer
-              format: int32
-            Message:
-              type: string
-            Data:
-              type: array
-              items:
-                type: string
-    User:
-          type: object
-          properties:
-            Username:
-              type: string
-              description: The username of the user
-            Password:
-              type: string
-              description: The password of the user
-            Role:
-              type: string
-              description: The role of the user
-
-    ResponseMahasiswa:
-      type: object
-      properties:
-        Status:
-          type: integer
-          format: int32
-        Message:
-          type: string
-        Data:
-          $ref: '#/components/schemas/Mahasiswa'
-    Time:
-      type: object
-      properties:
-        Status:
-          type: integer
-          format: int32
-        Message:
-          type: string
-
-    RequestUsers:
-      type: object
-      properties:
-        Username:
-          type: string
-    Mahasiswa:
-      type: object
-      properties:
-        MahasiswaId:
-          type: string
-        Nama:
-          type: string
-        Email:
-          type: string        
-        Phone:
-          type: string
-        Prodi:
-          $ref: '#/components/schemas/Prodi'
-        Account:
-          $ref: '#/components/schemas/User'
-
-    Prodi:
-      type: object
-      properties:
-        ProdId:
-          type: integer
-          format: int32
-        ProdNama:
-          type: string
-
-    Updated:
-      type: object
-      properties:
-        Email:
-          type: string
-        Prodi:
-          type: string
-        Phone:
-          type: string
     Auth:
       type: object
       properties:
         username:
           type: string
-          example: sankuy
+          example: pakarbi
         password:
           type: string
-          example: sankuypass
+          example: testpass
     AuthResponse:
       type: object
       properties:
@@ -414,7 +104,19 @@ components:
           example: Selamat Datang
         token:
           type: string
-          example: Sankuy
+          example: pakarbi
+    user:
+      type: object
+      properties:
+        username:
+          type: string
+          example : sankuy
+        password:
+          type: string
+          example: kuyahh
+        role:
+          type: string
+          example: user
   requestBodies:
     AuthReq:
       description: Request Authentication
@@ -435,3 +137,5 @@ components:
       type: apiKey
       name: Login
       in: header
+
+      
