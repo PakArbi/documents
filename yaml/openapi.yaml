@@ -21,6 +21,7 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pasetobackend
+  - name: User
     description: Pengelolaan Data User
     externalDocs:
       description: Deskripsi dan Kode Program
