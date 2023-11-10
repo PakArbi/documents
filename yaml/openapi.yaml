@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.0.2
 info:
   title: Documents API Cloud Function PakArbi - OpenAPI 3.0
   description: >-
@@ -9,7 +9,7 @@ info:
   license:
     name: Package BackendUser
     url: https://pkg.go.dev/github.com/PakArbi/pasetobackend
-  version: 1.0.12
+  version: 1.0.11
 externalDocs:
   description: Website kami
   url: https://pakarbi.github.io
