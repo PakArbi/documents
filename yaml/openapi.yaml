@@ -81,7 +81,7 @@ paths:
   /codeqr:  
     get:
       tags:
-        - QR Code
+        -  Code QR
       summary: A QR code generation endpoint
       parameters:
         - name: string_to_encode
