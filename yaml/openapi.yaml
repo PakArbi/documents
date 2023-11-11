@@ -130,6 +130,12 @@ components:
         token:
           type: string
           example: pakarbi
+    Image:
+      type: object
+      properties:
+       
+
+       
     user:
       type: object
       properties:
