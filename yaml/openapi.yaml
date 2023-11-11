@@ -26,6 +26,11 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pasetobackend
+  - name: Code QR
+    description: Generator Code QR
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pakarbi.github.io/
 paths:
   /login:
     post:
@@ -48,7 +53,7 @@ paths:
                 $ref: '#/components/schemas/AuthResponse'
         '405':
           description: Invalid input
-  /RegisterUser:
+  /Register:
     post:
       tags:
         - User
@@ -73,7 +78,26 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-
+  /codeqr:  
+    get:
+      tags:
+        - QR Code
+      summary: A QR code generation endpoint
+      parameters:
+        - name: string_to_encode
+          in: path
+          required: true
+          description: URL encoded string to convert to a QR code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+              img/png:
+                schema: 
+                  type: string
+                  format: binary
 components:
   schemas:
     Response:
