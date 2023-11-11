@@ -114,10 +114,10 @@ components:
       properties:
         username:
           type: string
-          example: pakarbi
+          example: faisal
         password:
           type: string
-          example: testpass
+          example: sankuy
     AuthResponse:
       type: object
       properties:
@@ -135,7 +135,7 @@ components:
       properties:
        
 
-       
+
     user:
       type: object
       properties:
