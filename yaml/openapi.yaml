@@ -30,7 +30,7 @@ tags:
     description: Generator Code QR
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pakarbi.github.io/
+      url: https://pakarbi.github.io/goqrcode
 paths:
   /login:
     post:
