@@ -31,6 +31,11 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/goqrcode
+  - name: Profile
+    description: Data Profile
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pakarbi.github.io/
 paths:
   /login:
     post:
@@ -78,6 +83,89 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
+
+  /insertProfile:
+    post:
+      tags:
+        - Profile
+      summary: Insert Data Profile
+      description: data private
+      operationId: 
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/profile'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input          
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+        
+  /updateProfile:
+    put:
+      tags:
+        - Profile
+      summary: Update data User Khusus Admin
+      description: Header auth for admin only
+      operationId: UpdatedataDosen
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Updated'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/profile'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+
+  /deleteuser:
+    delete:
+      tags:
+        - Profile
+      summary: delete Data atau mereset
+      description: Header auth for admin only
+      operationId: DeleteProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestProfile'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Credential'
+        '400':
+          description: Invalid status value
+      security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
+
   /codeqr:  
     get:
       tags:
@@ -133,8 +221,6 @@ components:
     Image:
       type: object
       properties:
-       
-
 
     user:
       type: object
