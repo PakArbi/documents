@@ -172,10 +172,10 @@ paths:
         -  Code QR
       summary: A QR code generation endpoint
       parameters:
-        - name: string_to_encode
+        - name: Image URL
           in: path
           required: true
-          description: URL encoded string to convert to a QR code
+          description: URL or base64 encoded URL of the image to be included in the QR code
           schema:
             type: string
       responses:
@@ -186,6 +186,66 @@ paths:
                 schema: 
                   type: string
                   format: binary
+        '400':
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+  /codeqr:
+    post:
+      tags:
+        - Code QR
+      summary: A QR code generation endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Image'
+      responses:
+        '200':
+          description: OK
+          content:
+              img/png:
+                schema: 
+                  type: string
+                  format: binary
+        '400':
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+  /codeqr:
+    put:
+      tags:
+        - Code QR
+      summary: A QR code generation endpoint
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Image'
+      responses:
+        '200':
+          description: OK
+          content:
+              img/png:
+                schema: 
+                  type: string
+                  format: binary
+        '400':
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
 components:
   schemas:
     Response:
@@ -221,6 +281,56 @@ components:
     Image:
       type: object
       properties:
+        url:
+          type: string
+          example: https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
+    Updated:
+      type: object
+      properties:
+        username:
+          type: string
+          example: faisal
+        password:
+          type: string
+          example: sankuy
+        role:
+          type: string
+          example: admin
+          
+    RequestProfile:
+      type: object
+      properties:
+        Username:
+          type: string
+          example: faisal
+          Npm:
+          type: string
+          example: 1214041
+          Email:
+          type: string
+          example: 1214041@std.ulbi.ac.id
+    
+    profile:
+      type: object
+      properties:
+        ID:
+          type: string
+          example: 1
+        NamaLengkap:
+          type: string
+          example: Muhammad Faisal Ashshidiq
+        Npm:
+          type: string
+          example: 1214041
+        NamaKendaraan:
+          type: string
+          example: Mio Z 
+        NomorKendaraan:
+          type: string
+          example: D 4416 LGJ
+        Time:
+          type: string
+          example: 9.44 AM
 
     user:
       type: object
