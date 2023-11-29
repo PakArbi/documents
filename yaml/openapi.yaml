@@ -41,8 +41,8 @@ paths:
     post:
       tags:
         - auth
-      summary: Login get Token
-      description: Login and Get User Token
+      summary: login get Token
+      description: login and Get User Token
       operationId: authService
       requestBody:
         content:
@@ -80,7 +80,7 @@ paths:
         '405':
           description: Invalid input          
       security:
-        - Login:
+        - login:
           - write:apiKey
           - read:apiKey
 
@@ -106,7 +106,7 @@ paths:
         '405':
           description: Invalid input          
       security:
-        - Login:
+        - login:
           - write:apiKey
           - read:apiKey
         
@@ -134,7 +134,7 @@ paths:
         '400':
           description: Invalid status value
       security:
-        - Login:
+        - login:
           - write:apiKey
           - read:apiKey
 
@@ -162,7 +162,7 @@ paths:
         '400':
           description: Invalid status value
       security:
-        - Login:
+        - login:
           - write:apiKey
           - read:apiKey
   /codeqr:  
@@ -194,9 +194,9 @@ paths:
         '405':
           description: Invalid input
           security:
-        - Login:
-          - write:apiKey
-          - read:apiKey
+        # - login:
+        #   - write:apiKey
+        #   - read:apiKey
     
 components:
   schemas:
@@ -300,9 +300,9 @@ components:
             items:
               $ref: '#/components/schemas/AuthResponse'
   securitySchemes:
-    Login:
+    login:
       type: apiKey
-      name: Login
+      name: login
       in: header
 
       
