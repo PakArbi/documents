@@ -292,12 +292,12 @@ components:
         token:
           type: string
           example: pakarbi
-    Image:
-      type: object
-      properties:
-        image:
-          type: string
-          example: https://i.ibb.co/0jZ3qYH/IMG-20211013-094400.jpg
+    # Image:
+    #   type: object
+    #   properties:
+    #     image:
+    #       type: string
+    #       example: https://i.ibb.co/0jZ3qYH/IMG-20211013-094400.jpg
     
   profile:
       type: object
