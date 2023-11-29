@@ -165,7 +165,6 @@ paths:
         - Login:
           - write:apiKey
           - read:apiKey
-
   /codeqr:  
     get:
       tags:
@@ -230,8 +229,7 @@ components:
           example: Selamat Datang
         token:
           type: string
-          example: pakarbi
-    
+          example: pakarbi 
   profile:
       type: object
       properties:
@@ -253,7 +251,6 @@ components:
         Time:
           type: string
           example: 2023-11-29T03:09:17+07:00
-
   Updated:
       type: object
       properties:
@@ -275,7 +272,6 @@ components:
         Time:
           type: string
           example: 2023-11-29T03:09:17+07:00
-
   user:
       type: object
       properties:
