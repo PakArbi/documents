@@ -90,7 +90,7 @@ paths:
         - Profile
       summary: Insert Data Profile
       description: data private
-      operationId: 
+      operationId: inputDataProfile
       requestBody:
         content:
           application/json:
@@ -116,7 +116,7 @@ paths:
         - Profile
       summary: Update data User Khusus Admin
       description: Header auth for admin only
-      operationId: UpdatedataDosen
+      operationId: UpdatedataProfile
       requestBody:
         content:
           application/json:
@@ -144,7 +144,7 @@ paths:
         - Profile
       summary: delete Data atau mereset
       description: Header auth for admin only
-      operationId: DeleteProfile
+      operationId: DeleteDataProfile
       requestBody:
         content:
           application/json:
@@ -199,67 +199,6 @@ paths:
           - write:apiKey
           - read:apiKey
     
-    
-  # /codeqrPost:
-  #   post:
-  #     tags:
-  #       - Code QR
-  #     summary: A QR code generation endpoint
-  #     requestBody:
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: '#/components/schemas/Image'
-  #     responses:
-  #       '200':
-  #         description: OK
-  #         content:
-  #             img/png:
-  #               schema: 
-  #                 type: string
-  #                 format: binary
-  #       '400':
-  #       description: Bad Request
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: '#/components/schemas/Response'
-  #       '405':
-  #         description: Invalid input
-  #         security:
-  #       - Login:
-  #         - write:apiKey
-  #         - read:apiKey
-  # /codeqr:
-  #   put:
-  #     tags:
-  #       - Code QR
-  #     summary: A QR code generation endpoint
-  #     requestBody:
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: '#/components/schemas/Image'
-  #     responses:
-  #       '200':
-  #         description: OK
-  #         content:
-  #             img/png:
-  #               schema: 
-  #                 type: string
-  #                 format: binary
-  #       '400':
-  #       description: Bad Request
-  #       content:
-  #         application/json:
-  #           schema:
-  #             $ref: '#/components/schemas/Response'
-  #       '405':
-  #         description: Invalid input
-  #         security:
-  #       - Login:
-  #         - write:apiKey
-  #         - read:apiKey
 components:
   schemas:
     Response:
@@ -292,12 +231,6 @@ components:
         token:
           type: string
           example: pakarbi
-    # Image:
-    #   type: object
-    #   properties:
-    #     image:
-    #       type: string
-    #       example: https://i.ibb.co/0jZ3qYH/IMG-20211013-094400.jpg
     
   profile:
       type: object
