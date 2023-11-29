@@ -194,6 +194,10 @@ paths:
               $ref: '#/components/schemas/Response'
         '405':
           description: Invalid input
+          security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
   /codeqr:
     post:
       tags:
@@ -220,6 +224,10 @@ paths:
               $ref: '#/components/schemas/Response'
         '405':
           description: Invalid input
+          security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
   /codeqr:
     put:
       tags:
@@ -246,6 +254,10 @@ paths:
               $ref: '#/components/schemas/Response'
         '405':
           description: Invalid input
+          security:
+        - Login:
+          - write:apiKey
+          - read:apiKey
 components:
   schemas:
     Response:
@@ -296,7 +308,7 @@ components:
         role:
           type: string
           example: admin
-          
+
     RequestProfile:
       type: object
       properties:
