@@ -233,43 +233,43 @@ components:
   profile:
       type: object
       properties:
-        ID:
+        id:
           type: string
           example: 1
-        NamaLengkap:
+        namalengkap:
           type: string
           example: Muhammad Faisal Ashshidiq
-        Npm:
+        npm:
           type: string
           example: 1214041
-        NamaKendaraan:
+        namakendaraan:
           type: string
           example: Mio Z 
-        NomorKendaraan:
+        nomorkendaraan:
           type: string
           example: D 4416 LGJ
-        Time:
+        time:
           type: string
           example: 2023-11-29T03:09:17+07:00
   Updated:
       type: object
       properties:
-        ID:
+        id:
           type: string
           example: 1
-        NamaLengkap:
+        namalengkap:
           type: string
           example: Muhammad Faisal Ashshidiq
-        Npm:
+        npm:
           type: string
           example: 1214041
-        NamaKendaraan:
+        namakendaraan:
           type: string
           example: Mio Z 
-        NomorKendaraan:
+        nomorkendaraan:
           type: string
           example: D 4416 LGJ
-        Time:
+        time:
           type: string
           example: 2023-11-29T03:09:17+07:00
   user:
