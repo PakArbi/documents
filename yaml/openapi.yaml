@@ -293,23 +293,11 @@ components:
     Image:
       type: object
       properties:
-        url:
+        image:
           type: string
-          example: https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
-    Updated:
-      type: object
-      properties:
-        username:
-          type: string
-          example: faisal
-        password:
-          type: string
-          example: sankuy
-        role:
-          type: string
-          example: admin
+          example: https://i.ibb.co/0jZ3qYH/IMG-20211013-094400.jpg
 
-    RequestProfile:
+  RequestProfile:
       type: object
       properties:
         Username:
@@ -322,7 +310,7 @@ components:
           type: string
           example: 1214041@std.ulbi.ac.id
     
-    profile:
+  profile:
       type: object
       properties:
         ID:
@@ -344,7 +332,7 @@ components:
           type: string
           example: 9.44 AM
 
-    user:
+  user:
       type: object
       properties:
         username:
