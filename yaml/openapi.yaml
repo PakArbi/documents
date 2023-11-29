@@ -158,7 +158,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Credential'
+                  $ref: '#/components/schemas/profile'
         '400':
           description: Invalid status value
       security:
