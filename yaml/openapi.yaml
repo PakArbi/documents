@@ -50,7 +50,6 @@ paths:
             schema:
               $ref: '#/components/schemas/user'
             example:
-              byEmail:
               email: "1214000@std.ulbi.ac.id"
               password: "123456"
       responses:
