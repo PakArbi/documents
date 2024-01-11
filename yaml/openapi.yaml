@@ -25,178 +25,232 @@ tags:
     description: Pengelolaan Data User
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pakarbi.github.io/pasetobackend
+      url: https://pakarbi.github.io/pakarbibackend
   - name: Code QR
     description: Generator Code QR
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pakarbi.github.io/backprofile
-  - name: Profile
-    description: Data Profile
+      url: https://pakarbi.github.io/pakarbibackend
+  - name: Parkiran
+    description: Data Parkir
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pakarbi.github.io/backprofile
+      url: https://pakarbi.github.io/pakarbibackend
 paths:
-  /login:
-    post:
-      tags:
-        - auth
-      summary: login get Token
-      description: login and Get User Token
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
-  /Register:
-    post:
-      tags:
-        - User
-      summary: Insert User
-      description: data username
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/user'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Response'
-        '405':
-          description: Invalid input          
-      security:
-        - login:
-          - write:apiKey
-          - read:apiKey
-
-  /insertProfile:
-    post:
-      tags:
-        - Profile
-      summary: Insert Data Profile
-      description: data private
-      operationId: inputDataProfile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Profile'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Profile'
-        '405':
-          description: Invalid input          
-      security:
-        - login:
-          - write:apiKey
-          - read:apiKey
-        
-  /updateProfile:
-    put:
-      tags:
-        - Profile
-      summary: Update data User Khusus Admin
-      description: Header auth for admin only
-      operationId: UpdatedataProfile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Updated'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Profile'
-        '400':
-          description: Invalid status value
-      security:
-        - login:
-          - write:apiKey
-          - read:apiKey
-
-  /deleteuser:
-    delete:
-      tags:
-        - Profile
-      summary: delete Data atau mereset
-      description: Header auth for admin only
-      operationId: DeleteDataProfile
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Profile'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Profile'
-        '400':
-          description: Invalid status value
-      security:
-        - login:
-          - write:apiKey
-          - read:apiKey
-  /codeqr:  
-    get:
-      tags:
-        -  Code QR
-      summary: A QR code generation endpoint
-      parameters:
-        - name: Image URL
-          in: path
-          required: true
-          description: URL or base64 encoded URL of the image to be included in the QR code
+ /login:
+  post:
+    tags:
+      - User
+    summary: Insert User
+    description: Data user
+    operationId: authService
+    requestBody:
+      content:
+        application/json:
           schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-              img/png:
-                schema: 
-                  type: string
-                  format: binary
-        '400':
+            $ref: '#/components/schemas/user'
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
+      '405':
+        description: Invalid input
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+/Register:
+  post:
+    tags:
+      - User
+    summary: Insert User
+    description: Data user
+    operationId: authService
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/user'
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
+      '405':
+        description: Invalid input
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+
+ /insertParkiranEmail:
+  post:
+    tags:
+      - Parkiran
+    summary: Insert Data Parkiran
+    description: Data private
+    operationId: inputDataParkir
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Parkiran'
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Parkiran'
+      '405':
+        description: Invalid input
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+
+/updateParkiranEmail:
+  put:
+    tags:
+      - Parkiran
+    summary: Update data User Khusus Admin
+    description: Header auth for admin only
+    operationId: UpdatedataParkir
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Updated'
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Parkiran'
+      '400':
+        description: Invalid status value
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+
+/deleteParkiranEmail:
+  delete:
+    tags:
+      - Parkiran
+    summary: Delete Data atau mereset
+    description: Header auth for admin only
+    operationId: DeleteDataParkir
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Parkiran'
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Parkiran'
+      '400':
+        description: Invalid status value
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+
+/codeqr:
+  post:
+    tags:
+      - Code QR
+    summary: A QR code generation endpoint
+    parameters:
+      - name: ID
+        in: query
+        required: true
+        description: ID of the profile
+        schema:
+          type: string
+      - name: Parkiranid
+        in: query
+        required: true
+        description: Parkiran ID
+        schema:
+          type: integer
+      - name: Nama
+        in: query
+        required: true
+        description: Nama lengkap
+        schema:
+          type: string
+      - name: NPM
+        in: query
+        required: true
+        description: Nomor Pokok Mahasiswa (NPM)
+        schema:
+          type: string
+      - name: Prodi
+        in: query
+        required: true
+        description: Program Studi
+        schema:
+          type: string
+      - name: NamaKendaraan
+        in: query
+        required: true
+        description: Nama kendaraan
+        schema:
+          type: string
+      - name: NomorKendaraan
+        in: query
+        required: true
+        description: Nomor kendaraan
+        schema:
+          type: string
+      - name: JenisKendaraan
+        in: query
+        required: true
+        description: Jenis kendaraan
+        schema:
+          type: string
+      - name: Status
+        in: query
+        required: true
+        description: Status parkir
+        schema:
+          type: string
+    responses:
+      '200':
+        description: OK
+        content:
+          img/png:
+            schema:
+              type: string
+              format: binary
+      '400':
         description: Bad Request
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Profile'
-        '405':
-          description: Invalid input
-          security:
-        # - login:
-        #   - write:apiKey
-        #   - read:apiKey
+              $ref: '#/components/schemas/Parkiran'
+      '405':
+        description: Invalid input
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+
     
 components:
   schemas:
@@ -212,12 +266,12 @@ components:
     Auth:
       type: object
       properties:
-        username:
+        email:
           type: string
-          example: faisal
+          example: PakArbi2023@std.ulbi.ac.id
         password:
           type: string
-          example: sankuy
+          example: adminpakarbipass
     AuthResponse:
       type: object
       properties:
@@ -230,7 +284,7 @@ components:
         token:
           type: string
           example: pakarbi 
-  Profile:
+    Parkiran:
       type: object
       properties:
         id:
@@ -238,19 +292,19 @@ components:
           example: 1
         namalengkap:
           type: string
-          example: Muhammad Faisal Ashshidiq
+          example: john
         npm:
           type: string
-          example: 1214041
+          example: 1214000
         namakendaraan:
           type: string
-          example: Mio Z 
+          example: Honda 
         nomorkendaraan:
           type: string
-          example: D 4416 LGJ
-        time:
+          example: B 4416 LGJ
+        status:
           type: string
-          example: 2023-11-29T03:09:17+07:00
+          example: sudah masuk
   Updated:
       type: object
       properties:
@@ -259,28 +313,28 @@ components:
           example: 1
         namalengkap:
           type: string
-          example: Muhammad Faisal Ashshidiq
+          example: Steven
         npm:
           type: string
           example: 1214041
         namakendaraan:
           type: string
-          example: Mio Z 
+          example: Honda 
         nomorkendaraan:
           type: string
-          example: D 4416 LGJ
-        time:
+          example: B 4416 LGJ
+        status:
           type: string
-          example: 2023-11-29T03:09:17+07:00
-  user:
+          example: sudah masuk
+  User:
       type: object
       properties:
-        username:
+        email:
           type: string
-          example : sankuy
+          example: 1214041@std.ulbi.ac.id
         password:
           type: string
-          example: kuyahh
+          example: 1214041
         role:
           type: string
           example: user
