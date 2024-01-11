@@ -52,7 +52,7 @@ paths:
             example:
               byEmail:
               email: "1214000@std.ulbi.ac.id"
-              password: "123456"
+              password: "pakarbi123456"
               byNPM:
               npm: "1214000"
               password: "123456"
