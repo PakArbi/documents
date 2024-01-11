@@ -65,18 +65,32 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-/Register:
-  post:
-    tags:
-      - User
-    summary: Insert User
-    description: Data user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/user'
+  /Register:
+    post:
+      tags:
+        - User
+      summary: Insert User
+      description: Data user
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+            example:
+              userid: D3/D41214000
+              username: JohnDoe
+              npm: 1214000
+              password: securepassword
+              confirmPassword: securepassword
+              email: johndoe@example.com
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response
           example:
             userid: D3/D41214000
             username: JohnDoe
