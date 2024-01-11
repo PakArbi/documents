@@ -37,41 +37,38 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
 paths:
-/login:
-  post:
-    tags:
-      - User
-    summary: User Login
-    description: Authenticate user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/user'
-          examples:
-            byNPM:
-              value:
-                npm: 1214000
-                password: securepassword
-            byEmail:
-              value:
-                email: johndoe@example.com
-                password: securepassword
-    responses:
-      '200':
-        description: Successful operation
+  /login:
+    post:
+      tags:
+        - User
+      summary: Insert User
+      description: Data user
+      operationId: authService
+      requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Response'
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-
+              $ref: '#/components/schemas/user'
+            example:
+              byEmail:
+              email: "1214000@std.ulbi.ac.id"
+              password: "123456"
+              byNPM:
+              npm: "1214000"
+              password: "123456"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
 /Register:
   post:
     tags:
