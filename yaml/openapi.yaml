@@ -214,7 +214,7 @@ paths:
           required: true
           description: ID of the parkiran
           schema:
-            type: integer
+            type: string
         - name: Nama
           in: query
           required: true
