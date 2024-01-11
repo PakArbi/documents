@@ -1,4 +1,4 @@
-openapi: 3.0.4
+openapi: 3.0.3
 info:
   title: Documents API Cloud Function PakArbi - OpenAPI 3.0
   description: >-
@@ -31,226 +31,228 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
-  - name:   
+  - name: Parkiran
     description: Data Parkir
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
 paths:
- /login:
-  post:
-    tags:
-      - User
-    summary: Insert User
-    description: Data user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
+  /login:
+    post:
+      tags:
+        - User
+      summary: Insert User
+      description: Data user
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
+  /Register:
+    post:
+      tags:
+        - User
+      summary: Insert User
+      description: Data user
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
+  /insertParkiranEmail:
+    post:
+      tags:
+        - Parkiran
+      summary: Insert Data Parkiran
+      description: Data private
+      operationId: inputDataParkir
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Parkiran'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parkiran'
+        '405':
+          description: Invalid input
+        '201':
+          description: QR Code generated successfully
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
+  /updateParkiranEmail:
+    put:
+      tags:
+        - Parkiran
+      summary: Update data User Khusus Admin
+      description: Header auth for admin only
+      operationId: UpdatedataParkir
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Updated'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Parkiran'
+        '400':
+          description: Invalid status value
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
+  /deleteParkiranEmail:
+    delete:
+      tags:
+        - Parkiran
+      summary: Delete Data atau mereset
+      description: Header auth for admin only
+      operationId: DeleteDataParkir
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Parkiran'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Parkiran'
+        '400':
+          description: Invalid status value
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
+  /codeqr:
+    post:
+      tags:
+        - Code QR
+      summary: A QR code generation endpoint
+      parameters:
+        - name: ID
+          in: query
+          required: true
+          description: ID of the profile
           schema:
-            $ref: '#/components/schemas/user'
-    responses:
-      '200':
-        description: Successful operation
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Response'
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-/Register:
-  post:
-    tags:
-      - User
-    summary: Insert User
-    description: Data user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
+            type: string
+        - name: Parkiranid
+          in: query
+          required: true
+          description: ID of the parkiran
           schema:
-            $ref: '#/components/schemas/user'
-    responses:
-      '200':
-        description: Successful operation
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Response'
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-
- /insertParkiranEmail:
-  post:
-    tags:
-      -   
-    summary: Insert Data    
-    description: Data private
-    operationId: inputDataParkir
-    requestBody:
-      content:
-        application/json:
+            type: integer
+        - name: Nama
+          in: query
+          required: true
+          description: Nama lengkap
           schema:
-            $ref: '#/components/schemas/  '
-    responses:
-      '200':
-        description: Successful operation
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/  '
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-
-/updateParkiranEmail:
-  put:
-    tags:
-      -   
-    summary: Update data User Khusus Admin
-    description: Header auth for admin only
-    operationId: UpdatedataParkir
-    requestBody:
-      content:
-        application/json:
+            type: string
+        - name: NPM
+          in: query
+          required: true
+          description: Nomor Pokok Mahasiswa (NPM)
           schema:
-            $ref: '#/components/schemas/Updated'
-    responses:
-      '200':
-        description: Successful operation
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/  '
-      '400':
-        description: Invalid status value
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-
-/deleteParkiranEmail:
-  delete:
-    tags:
-      -   
-    summary: Delete Data atau mereset
-    description: Header auth for admin only
-    operationId: DeleteDataParkir
-    requestBody:
-      content:
-        application/json:
+            type: string
+        - name: Prodi
+          in: query
+          required: true
+          description: Program Studi
           schema:
-            $ref: '#/components/schemas/  '
-    responses:
-      '200':
-        description: Successful operation
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/  '
-      '400':
-        description: Invalid status value
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-
-/codeqr:
-  post:
-    tags:
-      - Code QR
-    summary: A QR code generation endpoint
-    parameters:
-      - name: ID
-        in: query
-        required: true
-        description: ID of the profile
-        schema:
-          type: string
-      - name: Parkiranid
-        in: query
-        required: true
-        description:     ID
-        schema:
-          type: integer
-      - name: Nama
-        in: query
-        required: true
-        description: Nama lengkap
-        schema:
-          type: string
-      - name: NPM
-        in: query
-        required: true
-        description: Nomor Pokok Mahasiswa (NPM)
-        schema:
-          type: string
-      - name: Prodi
-        in: query
-        required: true
-        description: Program Studi
-        schema:
-          type: string
-      - name: NamaKendaraan
-        in: query
-        required: true
-        description: Nama kendaraan
-        schema:
-          type: string
-      - name: NomorKendaraan
-        in: query
-        required: true
-        description: Nomor kendaraan
-        schema:
-          type: string
-      - name: JenisKendaraan
-        in: query
-        required: true
-        description: Jenis kendaraan
-        schema:
-          type: string
-      - name: Status
-        in: query
-        required: true
-        description: Status parkir
-        schema:
-          type: string
-    responses:
-      '200':
-        description: OK
-        content:
-          img/png:
-            schema:
-              type: string
-              format: binary
-      '400':
-        description: Bad Request
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/  '
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-
+            type: string
+        - name: NamaKendaraan
+          in: query
+          required: true
+          description: Nama kendaraan
+          schema:
+            type: string
+        - name: NomorKendaraan
+          in: query
+          required: true
+          description: Nomor kendaraan
+          schema:
+            type: string
+        - name: JenisKendaraan
+          in: query
+          required: true
+          description: Jenis kendaraan
+          schema:
+            type: string
+        - name: Status
+          in: query
+          required: true
+          description: Status parkir
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parkiran'
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
     
 components:
   schemas:
@@ -284,7 +286,7 @@ components:
         token:
           type: string
           example: pakarbi 
-      :
+    Parkiran:
       type: object
       properties:
         id:
@@ -305,7 +307,7 @@ components:
         status:
           type: string
           example: sudah masuk
-  Updated:
+    Updated:
       type: object
       properties:
         id:
@@ -326,7 +328,7 @@ components:
         status:
           type: string
           example: sudah masuk
-  User:
+    User:
       type: object
       properties:
         email:
@@ -358,5 +360,3 @@ components:
       type: apiKey
       name: login
       in: header
-
-      
