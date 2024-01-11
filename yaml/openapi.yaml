@@ -8,7 +8,7 @@ info:
     email: sidiqfaisal30@gmail.com
   license:
     name: Package 
-    url: https://pkg.go.dev/github.com/PakArbi/pasetobackend
+    url: https://pkg.go.dev/github.com/PakArbi/pakarbibackend
   version: 1.0.11
 externalDocs:
   description: Website kami
@@ -20,7 +20,7 @@ tags:
     description: Authentikasi
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://pakarbi.github.io/pasetobackend
+      url: https://pakarbi.github.io/pakarbibackend
   - name: User
     description: Pengelolaan Data User
     externalDocs:
