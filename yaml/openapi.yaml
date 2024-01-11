@@ -104,7 +104,7 @@ paths:
       - login:
         - write:apiKey
         - read:apiKey
-  /insertParkiranEmail:
+  /insertDataParkiranEmail:
     post:
       tags:
         - Parkiran
