@@ -37,7 +37,7 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
 paths:
-/Register:
+/loginUserEmail:
   post:
     tags:
       - User
@@ -65,8 +65,7 @@ paths:
       - login:
         - write:apiKey
         - read:apiKey
-
-/login:
+/Register:
   post:
     tags:
       - User
