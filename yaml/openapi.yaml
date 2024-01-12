@@ -37,7 +37,7 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
 paths:
-/loginUserEmail:
+/login:
   post:
     tags:
       - User
@@ -50,7 +50,7 @@ paths:
           schema:
             $ref: '#/components/schemas/User'
           example:
-            email: "1214000@std.ulbi.ac.id"
+            npm: "1214000"
             password: "123456"
     responses:
       '200':
