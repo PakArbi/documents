@@ -37,45 +37,45 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
 paths:
-/Register:
-  post:
-    tags:
-      - User
-    summary: Insert User
-    description: Data user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/User'
-          example:
-            userid: "D3/D41214000"
-            username: "JohnDoe"
-            npm: 1214000
-            password: "securepassword"
-            confirmPassword: "securepassword"
-            email: "johndoe@example.com"
-    responses:
-      '200':
-        description: Successful operation
+  /Register:
+    post:
+      tags:
+        - User
+      summary: Insert User
+      description: Data user
+      operationId: authService
+      requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Response'
+              $ref: '#/components/schemas/User'
             example:
               userid: "D3/D41214000"
               username: "JohnDoe"
               npm: 1214000
               password: "securepassword"
-              passwordhash: "securepassword"
+              confirmPassword: "securepassword"
               email: "johndoe@example.com"
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              example:
+                userid: "D3/D41214000"
+                username: "JohnDoe"
+                npm: 1214000
+                password: "securepassword"
+                passwordhash: "securepassword"
+                email: "johndoe@example.com"
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
 
 /loginusernpm:
   post:
