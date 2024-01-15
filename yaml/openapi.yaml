@@ -48,7 +48,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/auth'
             example:
               userid: "D3/D41214000"
               username: "JohnDoe"
@@ -80,14 +80,14 @@ paths:
   post:
     tags:
       - auth
-    summary: Insert User
+    summary: login pakai npm
     description: Data user
     operationId: authService
     requestBody:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/auth'
           example:
             npm: "1214000"
             password: "123456"
@@ -108,14 +108,14 @@ paths:
   post:
     tags:
       - auth
-    summary: Insert User
+    summary: login pakai email
     description: Data user
     operationId: authService
     requestBody:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/auth'
           example:
             email: "1214000@std.ulbi.ac.id"
             password: "123456"
