@@ -26,11 +26,11 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
-  - name: Code QR
-    description: Generator Code QR
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://pakarbi.github.io/pakarbibackend
+  # - name: Code QR
+  #   description: Generator Code QR
+  #   externalDocs:
+  #     description: Deskripsi dan Kode Program
+  #     url: https://pakarbi.github.io/pakarbibackend
   - name: Parkiran
     description: Data Parkir
     externalDocs:
@@ -301,6 +301,28 @@ paths:
   #         - read:apiKey
     
 components:
+ schemas:
+    User:
+       type: object
+  properties:
+    usernameid:
+      type: string
+      example: "D3/D41214000"
+    username:
+      type: string
+      example: "sal"
+    npm:
+      type: string
+      example: "1214000"
+    password:
+      type: string
+      example: "securepassword"
+    passwordhash:
+      type: string
+      example: "securepasswordhash"
+    email:
+      type: string
+      example: "1214000@std.ulbi.ac.id"
   schemas:
     Response:
       type: object
