@@ -37,34 +37,6 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
 paths:
-/login:
-  post:
-    tags:
-      - User
-    summary: Insert User
-    description: Data user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/User'
-          example:
-            npm: "1214000"
-            password: "123456"
-    responses:
-      '200':
-        description: Successful operation
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Response'
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
 /Register:
   post:
     tags:
@@ -96,8 +68,65 @@ paths:
               username: "JohnDoe"
               npm: 1214000
               password: "securepassword"
-              confirmPassword: "securepassword"
+              passwordhash: "securepassword"
               email: "johndoe@example.com"
+      '405':
+        description: Invalid input
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+
+/loginusernpm:
+  post:
+    tags:
+      - User
+    summary: Insert User
+    description: Data user
+    operationId: authService
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+          example:
+            npm: "1214000"
+            password: "123456"
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
+      '405':
+        description: Invalid input
+    security:
+      - login:
+        - write:apiKey
+        - read:apiKey
+/loginuseremail:
+  post:
+    tags:
+      - User
+    summary: Insert User
+    description: Data user
+    operationId: authService
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/User'
+          example:
+            email: "1214000@std.ulbi.ac.id"
+            password: "123456"
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Response'
       '405':
         description: Invalid input
     security:
