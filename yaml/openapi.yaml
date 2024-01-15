@@ -301,28 +301,28 @@ paths:
   #         - read:apiKey
     
 components:
- schemas:
+  schemas:
     User:
-       type: object
-  properties:
-    usernameid:
-      type: string
-      example: "D3/D41214000"
-    username:
-      type: string
-      example: "sal"
-    npm:
-      type: string
-      example: "1214000"
-    password:
-      type: string
-      example: "securepassword"
-    passwordhash:
-      type: string
-      example: "securepasswordhash"
-    email:
-      type: string
-      example: "1214000@std.ulbi.ac.id"
+      type: object
+      properties:
+        usernameid:
+          type: string
+          example: "D3/D41214000"
+        username:
+          type: string
+          example: "sal"
+        npm:
+          type: string
+          example: "1214000"
+        password:
+          type: string
+          example: "securepassword"
+        passwordhash:
+          type: string
+          example: "securepasswordhash"
+        email:
+          type: string
+          example: "1214000@std.ulbi.ac.id"
   schemas:
     Response:
       type: object
@@ -375,6 +375,39 @@ components:
         status:
           type: string
           example: sudah masuk
+    Updated:
+      type: object
+      properties:
+        id:
+          type: string
+          example: 1
+        namalengkap:
+          type: string
+          example: Steven
+        npm:
+          type: string
+          example: 1214041
+        namakendaraan:
+          type: string
+          example: Honda 
+        nomorkendaraan:
+          type: string
+          example: B 4416 LGJ
+        status:
+          type: string
+          example: sudah masuk
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          example: 1214041@std.ulbi.ac.id
+        password:
+          type: string
+          example: 1214041
+        role:
+          type: string
+          example: user
     Updated:
       type: object
       properties:
