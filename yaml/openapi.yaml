@@ -40,7 +40,7 @@ paths:
   /Register:
     post:
       tags:
-        - User
+        - auth
       summary: Insert User
       description: Data user
       operationId: authService
@@ -76,11 +76,10 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-
 /loginusernpm:
   post:
     tags:
-      - User
+      - auth
     summary: Insert User
     description: Data user
     operationId: authService
@@ -108,7 +107,7 @@ paths:
 /loginuseremail:
   post:
     tags:
-      - User
+      - auth
     summary: Insert User
     description: Data user
     operationId: authService
@@ -220,86 +219,86 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /codeqr:
-    post:
-      tags:
-        - Code QR
-      summary: A QR code generation endpoint
-      parameters:
-        - name: ID
-          in: query
-          required: true
-          description: ID of the profile
-          schema:
-            type: string
-        - name: Parkiranid
-          in: query
-          required: true
-          description: ID of the parkiran
-          schema:
-            type: string
-        - name: Nama
-          in: query
-          required: true
-          description: Nama lengkap
-          schema:
-            type: string
-        - name: NPM
-          in: query
-          required: true
-          description: Nomor Pokok Mahasiswa (NPM)
-          schema:
-            type: string
-        - name: Prodi
-          in: query
-          required: true
-          description: Program Studi
-          schema:
-            type: string
-        - name: NamaKendaraan
-          in: query
-          required: true
-          description: Nama kendaraan
-          schema:
-            type: string
-        - name: NomorKendaraan
-          in: query
-          required: true
-          description: Nomor kendaraan
-          schema:
-            type: string
-        - name: JenisKendaraan
-          in: query
-          required: true
-          description: Jenis kendaraan
-          schema:
-            type: string
-        - name: Status
-          in: query
-          required: true
-          description: Status parkir
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Parkiran'
-        '405':
-          description: Invalid input
-      security:
-        - login:
-          - write:apiKey
-          - read:apiKey
+  # /codeqr:
+  #   post:
+  #     tags:
+  #       - Code QR
+  #     summary: A QR code generation endpoint
+  #     parameters:
+  #       - name: ID
+  #         in: query
+  #         required: true
+  #         description: ID of the profile
+  #         schema:
+  #           type: string
+  #       - name: Parkiranid
+  #         in: query
+  #         required: true
+  #         description: ID of the parkiran
+  #         schema:
+  #           type: string
+  #       - name: Nama
+  #         in: query
+  #         required: true
+  #         description: Nama lengkap
+  #         schema:
+  #           type: string
+  #       - name: NPM
+  #         in: query
+  #         required: true
+  #         description: Nomor Pokok Mahasiswa (NPM)
+  #         schema:
+  #           type: string
+  #       - name: Prodi
+  #         in: query
+  #         required: true
+  #         description: Program Studi
+  #         schema:
+  #           type: string
+  #       - name: NamaKendaraan
+  #         in: query
+  #         required: true
+  #         description: Nama kendaraan
+  #         schema:
+  #           type: string
+  #       - name: NomorKendaraan
+  #         in: query
+  #         required: true
+  #         description: Nomor kendaraan
+  #         schema:
+  #           type: string
+  #       - name: JenisKendaraan
+  #         in: query
+  #         required: true
+  #         description: Jenis kendaraan
+  #         schema:
+  #           type: string
+  #       - name: Status
+  #         in: query
+  #         required: true
+  #         description: Status parkir
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         description: OK
+  #         content:
+  #           image/png:
+  #             schema:
+  #               type: string
+  #               format: binary
+  #       '400':
+  #         description: Bad Request
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Parkiran'
+  #       '405':
+  #         description: Invalid input
+  #     security:
+  #       - login:
+  #         - write:apiKey
+  #         - read:apiKey
     
 components:
   schemas:
