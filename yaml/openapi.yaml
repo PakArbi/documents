@@ -45,11 +45,11 @@ paths:
               $ref: '#/components/schemas/User'
             example:
               userid: "D3/D41214000"
-              username: "JohnDoe"
+              username: "Pakarbi"
               npm: 1214000
-              password: "securepassword"
-              confirmPassword: "securepassword"
-              email: "johndoe@example.com"
+              password: "123456"
+              confirmPassword: "123456"
+              email: "1214000@std.ulbi.ac.id"
       responses:
         '200':
           description: Successful operation
@@ -59,11 +59,11 @@ paths:
                 $ref: '#/components/schemas/Response'
               example:
                 userid: "D3/D41214000"
-                username: "JohnDoe"
+                username: "Pakarbi"
                 npm: 1214000
-                password: "securepassword"
-                passwordhash: "securepasswordhash"
-                email: "johndoe@example.com"
+                password: "123456"
+                passwordhash: "123456"
+                email: "1214000@std.ulbi.ac.id"
         '405':
           description: Invalid input
       security:
@@ -355,7 +355,7 @@ components:
           example: 1
         namalengkap:
           type: string
-          example: john
+          example: pakarbi
         npm:
           type: string
           example: 1214000
@@ -365,9 +365,9 @@ components:
         nomorkendaraan:
           type: string
           example: B 4416 LGJ
-        status:
+        jeniskendaraan:
           type: string
-          example: sudah masuk
+          example: Motor
     Updated:
       type: object
       properties:
@@ -376,19 +376,19 @@ components:
           example: 1
         namalengkap:
           type: string
-          example: Steven
+          example: pakarbi
         npm:
           type: string
-          example: 1214041
+          example: 1214000
         namakendaraan:
           type: string
           example: Honda
         nomorkendaraan:
           type: string
           example: B 4416 LGJ
-        status:
+        jeniskendaraan:
           type: string
-          example: sudah masuk
+          example: Motor
   requestBodies:
     AuthReq:
       description: Request Authentication
