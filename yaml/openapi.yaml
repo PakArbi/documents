@@ -127,7 +127,7 @@ paths:
           - write:apiKey
           - read:apiKey
 
-/insertDataParkiranEmail:
+/insertDataParkiran:
   post:
     tags:
       - Parkiran
