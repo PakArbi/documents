@@ -1,13 +1,12 @@
 openapi: 3.0.3
 info:
   title: Documents API Cloud Function PakArbi - OpenAPI 3.0
-  description: >-
-    Dokumentasi API untuk Aplikasi PakArbi dari Cloud function 
+  description: "Dokumentasi API untuk Aplikasi PakArbi dari Cloud function"
   termsOfService: https://github.com/PakArbi/documents
   contact:
     email: sidiqfaisal30@gmail.com
   license:
-    name: Package 
+    name: Package
     url: https://pkg.go.dev/github.com/PakArbi/pakarbibackend
   version: 1.0.11
 externalDocs:
@@ -26,13 +25,8 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
-  # - name: Code QR
-  #   description: Generator Code QR
-  #   externalDocs:
-  #     description: Deskripsi dan Kode Program
-  #     url: https://pakarbi.github.io/pakarbibackend
   - name: Parkiran
-    description: Data Parkir
+    description: Pengelolaan Data Parkir User
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
@@ -133,34 +127,34 @@ paths:
         - write:apiKey
         - read:apiKey
 
-  /insertDataParkiranEmail:
-    post:
-      tags:
-        - Parkiran
-      summary: Insert Data Parkiran
-      description: Data private
-      operationId: inputDataParkir
-      requestBody:
+/insertDataParkiranEmail:
+  post:
+    tags:
+      - Parkiran
+    summary: Insert Data Parkiran with QR Code
+    description: Insert private data and generate QR Code
+    operationId: inputDataParkirWithQR
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Parkiran'
+    responses:
+      '200':
+        description: Successful operation
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Parkiran'
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Parkiran'
-        '405':
-          description: Invalid input
-        '201':
-          description: QR Code generated successfully
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
+      '405':
+        description: Invalid input
+      '201':
+        description: QR Code generated successfully
+        content:
+          image/png:
+            schema:
+              type: string
+              format: binary
       security:
         - login:
           - write:apiKey
@@ -219,87 +213,87 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  # /codeqr:
-  #   post:
-  #     tags:
-  #       - Code QR
-  #     summary: A QR code generation endpoint
-  #     parameters:
-  #       - name: ID
-  #         in: query
-  #         required: true
-  #         description: ID of the profile
-  #         schema:
-  #           type: string
-  #       - name: Parkiranid
-  #         in: query
-  #         required: true
-  #         description: ID of the parkiran
-  #         schema:
-  #           type: string
-  #       - name: Nama
-  #         in: query
-  #         required: true
-  #         description: Nama lengkap
-  #         schema:
-  #           type: string
-  #       - name: NPM
-  #         in: query
-  #         required: true
-  #         description: Nomor Pokok Mahasiswa (NPM)
-  #         schema:
-  #           type: string
-  #       - name: Prodi
-  #         in: query
-  #         required: true
-  #         description: Program Studi
-  #         schema:
-  #           type: string
-  #       - name: NamaKendaraan
-  #         in: query
-  #         required: true
-  #         description: Nama kendaraan
-  #         schema:
-  #           type: string
-  #       - name: NomorKendaraan
-  #         in: query
-  #         required: true
-  #         description: Nomor kendaraan
-  #         schema:
-  #           type: string
-  #       - name: JenisKendaraan
-  #         in: query
-  #         required: true
-  #         description: Jenis kendaraan
-  #         schema:
-  #           type: string
-  #       - name: Status
-  #         in: query
-  #         required: true
-  #         description: Status parkir
-  #         schema:
-  #           type: string
-  #     responses:
-  #       '200':
-  #         description: OK
-  #         content:
-  #           image/png:
-  #             schema:
-  #               type: string
-  #               format: binary
-  #       '400':
-  #         description: Bad Request
-  #         content:
-  #           application/json:
-  #             schema:
-  #               $ref: '#/components/schemas/Parkiran'
-  #       '405':
-  #         description: Invalid input
-  #     security:
-  #       - login:
-  #         - write:apiKey
-  #         - read:apiKey
-    
+  /codeqr:
+    post:
+      tags:
+        - Code QR
+      summary: A QR code generation endpoint
+      parameters:
+        - name: ID
+          in: query
+          required: true
+          description: ID of the profile
+          schema:
+            type: string
+        - name: Parkiranid
+          in: query
+          required: true
+          description: ID of the parkiran
+          schema:
+            type: string
+        - name: Nama
+          in: query
+          required: true
+          description: Nama lengkap
+          schema:
+            type: string
+        - name: NPM
+          in: query
+          required: true
+          description: Nomor Pokok Mahasiswa (NPM)
+          schema:
+            type: string
+        - name: Prodi
+          in: query
+          required: true
+          description: Program Studi
+          schema:
+            type: string
+        - name: NamaKendaraan
+          in: query
+          required: true
+          description: Nama kendaraan
+          schema:
+            type: string
+        - name: NomorKendaraan
+          in: query
+          required: true
+          description: Nomor kendaraan
+          schema:
+            type: string
+        - name: JenisKendaraan
+          in: query
+          required: true
+          description: Jenis kendaraan
+          schema:
+            type: string
+        - name: Status
+          in: query
+          required: true
+          description: Status parkir
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parkiran'
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
+
 components:
   schemas:
     User:
@@ -323,7 +317,6 @@ components:
         email:
           type: string
           example: "1214000@std.ulbi.ac.id"
-  schemas:
     Response:
       type: object
       properties:
@@ -353,7 +346,7 @@ components:
           example: Selamat Datang
         token:
           type: string
-          example: pakarbi 
+          example: pakarbi
     Parkiran:
       type: object
       properties:
@@ -368,7 +361,7 @@ components:
           example: 1214000
         namakendaraan:
           type: string
-          example: Honda 
+          example: Honda
         nomorkendaraan:
           type: string
           example: B 4416 LGJ
@@ -389,58 +382,13 @@ components:
           example: 1214041
         namakendaraan:
           type: string
-          example: Honda 
+          example: Honda
         nomorkendaraan:
           type: string
           example: B 4416 LGJ
         status:
           type: string
           example: sudah masuk
-    User:
-      type: object
-      properties:
-        email:
-          type: string
-          example: 1214041@std.ulbi.ac.id
-        password:
-          type: string
-          example: 1214041
-        role:
-          type: string
-          example: user
-    Updated:
-      type: object
-      properties:
-        id:
-          type: string
-          example: 1
-        namalengkap:
-          type: string
-          example: Steven
-        npm:
-          type: string
-          example: 1214041
-        namakendaraan:
-          type: string
-          example: Honda 
-        nomorkendaraan:
-          type: string
-          example: B 4416 LGJ
-        status:
-          type: string
-          example: sudah masuk
-    User:
-      type: object
-      properties:
-        email:
-          type: string
-          example: 1214041@std.ulbi.ac.id
-        password:
-          type: string
-          example: 1214041
-        role:
-          type: string
-          example: user
   requestBodies:
     AuthReq:
       description: Request Authentication
