@@ -62,7 +62,7 @@ paths:
                 username: "JohnDoe"
                 npm: 1214000
                 password: "securepassword"
-                passwordhash: "securepassword"
+                passwordhash: "securepasswordhash"
                 email: "johndoe@example.com"
         '405':
           description: Invalid input
@@ -70,62 +70,64 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-/loginusernpm:
-  post:
-    tags:
-      - User
-    summary: Insert User
-    description: Data user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/User'
-          example:
-            npm: "1214000"
-            password: "123456"
-    responses:
-      '200':
-        description: Successful operation
+
+  /loginusernpm:
+    post:
+      tags:
+        - User
+      summary: Insert User
+      description: Data user
+      operationId: authService
+      requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Response'
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
-/loginuseremail:
-  post:
-    tags:
-      - User
-    summary: Insert User
-    description: Data user
-    operationId: authService
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/User'
-          example:
-            email: "1214000@std.ulbi.ac.id"
-            password: "123456"
-    responses:
-      '200':
-        description: Successful operation
+              $ref: '#/components/schemas/User'
+            example:
+              npm: "1214000"
+              password: "123456"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
+
+  /loginuseremail:
+    post:
+      tags:
+        - User
+      summary: Insert User
+      description: Data user
+      operationId: authService
+      requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Response'
-      '405':
-        description: Invalid input
-    security:
-      - login:
-        - write:apiKey
-        - read:apiKey
+              $ref: '#/components/schemas/User'
+            example:
+              email: "1214000@std.ulbi.ac.id"
+              password: "123456"
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '405':
+          description: Invalid input
+      security:
+        - login:
+          - write:apiKey
+          - read:apiKey
 
 /insertDataParkiranEmail:
   post:
