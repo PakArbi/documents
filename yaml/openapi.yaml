@@ -126,7 +126,6 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-
 /insertDataParkiran:
   post:
     tags:
@@ -293,7 +292,6 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-
 components:
   schemas:
     User:
