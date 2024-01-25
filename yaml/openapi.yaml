@@ -126,34 +126,34 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-/insertDataParkiran:
-  post:
-    tags:
-      - Parkiran
-    summary: Insert Data Parkiran with QR Code
-    description: Insert private data and generate QR Code
-    operationId: inputDataParkirWithQR
-    requestBody:
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Parkiran'
-    responses:
-      '200':
-        description: Successful operation
+  /insertDataParkiran:
+    post:
+      tags:
+        - Parkiran
+      summary: Insert Data Parkiran with QR Code
+      description: Insert private data and generate QR Code
+      operationId: inputDataParkirWithQR
+      requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/Parkiran'
-      '405':
-        description: Invalid input
-      '201':
-        description: QR Code generated successfully
-        content:
-          image/png:
-            schema:
-              type: string
-              format: binary
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parkiran'
+        '405':
+          description: Invalid input
+        '201':
+          description: QR Code generated successfully
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
       security:
         - login:
           - write:apiKey
