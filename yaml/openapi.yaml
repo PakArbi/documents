@@ -34,7 +34,7 @@ paths:
   /Register:
     post:
       tags:
-        - User
+        - auth
       summary: Insert User
       description: Data user
       operationId: authService
@@ -73,7 +73,7 @@ paths:
   /loginusernpm:
     post:
       tags:
-        - User
+        - auth
       summary: Insert User
       description: Data user
       operationId: authService
@@ -101,7 +101,7 @@ paths:
   /loginuseremail:
     post:
       tags:
-        - User
+        - auth
       summary: Insert User
       description: Data user
       operationId: authService
