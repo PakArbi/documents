@@ -266,12 +266,6 @@ paths:
           description: Jenis kendaraan
           schema:
             type: string
-        - name: Status
-          in: query
-          required: true
-          description: Status parkir
-          schema:
-            type: string
       responses:
         '200':
           description: OK
@@ -356,7 +350,7 @@ components:
           example: pakarbi
         npm:
           type: string
-          example: 1214000
+          example: "1214000"
         namakendaraan:
           type: string
           example: Honda
