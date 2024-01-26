@@ -22,12 +22,12 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
   - name: ParkiranNPM
-    description: Pengelolaan Data Parkir User
+    description: Pengelolaan Data Parkir User NPM
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
   - name: ParkiranEmail
-    description: Pengelolaan Data Parkir User
+    description: Pengelolaan Data Parkir User Email
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
