@@ -294,86 +294,86 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /codeqr:
-    post:
-      tags:
-        - Code QR
-      summary: A QR code generation endpoint
-      parameters:
-        - name: Parkiranid
-          in: query
-          required: true
-          description: ID of the parkiran
-          schema:
-            type: string
-        - name: Nama
-          in: query
-          required: true
-          description: Nama lengkap
-          schema:
-            type: string
-        - name: NPM
-          in: query
-          required: true
-          description: Nomor Pokok Mahasiswa (NPM)
-          schema:
-            type: string
-        - name: Prodi
-          in: query
-          required: true
-          description: Program Studi
-          schema:
-            type: string
-        - name: NamaKendaraan
-          in: query
-          required: true
-          description: Nama kendaraan
-          schema:
-            type: string
-        - name: NomorKendaraan
-          in: query
-          required: true
-          description: Nomor kendaraan
-          schema:
-            type: string
-        - name: JenisKendaraan
-          in: query
-          required: true
-          description: Jenis kendaraan
-          schema:
-            type: string
-        - name: Jammasuk
-          in: query
-          required: true
-          description: Jam Masuk
-          schema:
-            type: string
-        - name: Jamkeluar
-          in: query
-          required: true
-          description: Jam Keluar
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            image/png:
-              schema:
-                type: string
-                format: binary
-        '400':
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Parkiran'
-        '405':
-          description: Invalid input
-      security:
-        - login:
-          - write:apiKey
-          - read:apiKey
+  # /codeqr:
+  #   post:
+  #     tags:
+  #       - Code QR
+  #     summary: A QR code generation endpoint
+  #     parameters:
+  #       - name: Parkiranid
+  #         in: query
+  #         required: true
+  #         description: ID of the parkiran
+  #         schema:
+  #           type: string
+  #       - name: Nama
+  #         in: query
+  #         required: true
+  #         description: Nama lengkap
+  #         schema:
+  #           type: string
+  #       - name: NPM
+  #         in: query
+  #         required: true
+  #         description: Nomor Pokok Mahasiswa (NPM)
+  #         schema:
+  #           type: string
+  #       - name: Prodi
+  #         in: query
+  #         required: true
+  #         description: Program Studi
+  #         schema:
+  #           type: string
+  #       - name: NamaKendaraan
+  #         in: query
+  #         required: true
+  #         description: Nama kendaraan
+  #         schema:
+  #           type: string
+  #       - name: NomorKendaraan
+  #         in: query
+  #         required: true
+  #         description: Nomor kendaraan
+  #         schema:
+  #           type: string
+  #       - name: JenisKendaraan
+  #         in: query
+  #         required: true
+  #         description: Jenis kendaraan
+  #         schema:
+  #           type: string
+  #       - name: Jammasuk
+  #         in: query
+  #         required: true
+  #         description: Jam Masuk
+  #         schema:
+  #           type: string
+  #       - name: Jamkeluar
+  #         in: query
+  #         required: true
+  #         description: Jam Keluar
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         description: OK
+  #         content:
+  #           image/png:
+  #             schema:
+  #               type: string
+  #               format: binary
+  #       '400':
+  #         description: Bad Request
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/Parkiran'
+  #       '405':
+  #         description: Invalid input
+  #     security:
+  #       - login:
+  #         - write:apiKey
+  #         - read:apiKey
   /getallparkiran:
     get:
       tags:
@@ -500,9 +500,9 @@ components:
     Updated:
       type: object
       properties:
-        id:
+        parkiranid:
           type: string
-          example: 1
+          example: D31214000
         namalengkap:
           type: string
           example: pakarbi
