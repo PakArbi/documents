@@ -21,12 +21,17 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
-  - name: ParkiranNPM
+  - name: parkirannpm
     description: Pengelolaan Data Parkir User NPM
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
-  - name: ParkiranEmail
+  - name: parkiranemail
+    description: Pengelolaan Data Parkir User Email
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pakarbi.github.io/pakarbibackend
+  - name: Parkiran
     description: Pengelolaan Data Parkir User Email
     externalDocs:
       description: Deskripsi dan Kode Program
@@ -130,7 +135,7 @@ paths:
   /insertparkirannpm:
     post:
       tags:
-        - ParkiranNPM
+        - parkirannpm
       summary: Insert Data Parkiran with QR Code
       description: Insert private data and generate QR Code
       operationId: inputDataParkirWithQR
@@ -162,7 +167,7 @@ paths:
   /updateparkirannpm:
     put:
       tags:
-        - ParkiranNPM
+        - parkirannpm
       summary: Update data User Khusus Admin
       description: Header auth for admin only
       operationId: UpdatedataParkir
@@ -189,7 +194,7 @@ paths:
   /deleteparkirannpm:
     delete:
       tags:
-        - ParkiranNPM
+        - parkirannpm
       summary: Delete Data atau mereset
       description: Header auth for admin only
       operationId: DeleteDataParkir
@@ -216,7 +221,7 @@ paths:
   /insertparkiranemail:
     post:
       tags:
-        - ParkiranEmail
+        - parkiranemail
       summary: Insert Data Parkiran with QR Code
       description: Insert private data and generate QR Code
       operationId: inputDataParkirWithQR
@@ -248,7 +253,7 @@ paths:
   /updateparkiranemail:
     put:
       tags:
-        - ParkiranEmail
+        - parkiranemail
       summary: Update data User Khusus Admin
       description: Header auth for admin only
       operationId: UpdatedataParkir
@@ -275,7 +280,7 @@ paths:
   /deleteparkiranemail:
     delete:
       tags:
-        - ParkiranEmail
+        - parkiranemail
       summary: Delete Data atau mereset
       description: Header auth for admin only
       operationId: DeleteDataParkir
