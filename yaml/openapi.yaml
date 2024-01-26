@@ -14,14 +14,10 @@ externalDocs:
   url: https://pakarbi.github.io
 servers:
   - url: https://asia-southeast2-project3-403614.cloudfunctions.net/
+  - url: https://asia-southeast2-pakarbi.cloudfunctions.net/
 tags:
   - name: auth
     description: Authentikasi
-    externalDocs:
-      description: Deskripsi dan Kode Program
-      url: https://pakarbi.github.io/pakarbibackend
-  - name: User
-    description: Pengelolaan Data User
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
@@ -31,7 +27,7 @@ tags:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
 paths:
-  /Register:
+  /registerpakarbi:
     post:
       tags:
         - auth
@@ -70,7 +66,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /loginusernpm:
+  /loginpakarbinmp:
     post:
       tags:
         - auth
@@ -98,7 +94,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /loginuseremail:
+  /loginpakarbiemail:
     post:
       tags:
         - auth
@@ -126,7 +122,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /insertDataParkiran:
+  /insertparkirannpm:
     post:
       tags:
         - Parkiran
@@ -158,7 +154,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /updateParkiranEmail:
+  /updateparkirannpm:
     put:
       tags:
         - Parkiran
@@ -185,7 +181,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /deleteParkiranEmail:
+  /deleteparkirannpm:
     delete:
       tags:
         - Parkiran
@@ -212,7 +208,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /insertParkiranNPM:
+  /insertparkiranemail:
     post:
       tags:
         - Parkiran
@@ -244,7 +240,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /updateParkiranNPM:
+  /updateparkiranemail:
     put:
       tags:
         - Parkiran
@@ -271,7 +267,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /deleteParkiranNPM:
+  /deleteparkiranemail:
     delete:
       tags:
         - Parkiran
@@ -378,7 +374,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-      /getallDataParkiran:
+  /getallparkiran:
     get:
       tags:
         - Parkiran
@@ -400,7 +396,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /getOneDataParkiran/{parkiranId}:
+  /getoeneparkiran:
     get:
       tags:
         - Parkiran
