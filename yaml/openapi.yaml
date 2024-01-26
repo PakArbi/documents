@@ -21,7 +21,12 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
-  - name: Parkiran
+  - name: ParkiranNPM
+    description: Pengelolaan Data Parkir User
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pakarbi.github.io/pakarbibackend
+  - name: ParkiranEmail
     description: Pengelolaan Data Parkir User
     externalDocs:
       description: Deskripsi dan Kode Program
@@ -125,7 +130,7 @@ paths:
   /insertparkirannpm:
     post:
       tags:
-        - Parkiran
+        - ParkiranNPM
       summary: Insert Data Parkiran with QR Code
       description: Insert private data and generate QR Code
       operationId: inputDataParkirWithQR
@@ -157,7 +162,7 @@ paths:
   /updateparkirannpm:
     put:
       tags:
-        - Parkiran
+        - ParkiranNPM
       summary: Update data User Khusus Admin
       description: Header auth for admin only
       operationId: UpdatedataParkir
@@ -184,7 +189,7 @@ paths:
   /deleteparkirannpm:
     delete:
       tags:
-        - Parkiran
+        - ParkiranNPM
       summary: Delete Data atau mereset
       description: Header auth for admin only
       operationId: DeleteDataParkir
@@ -211,7 +216,7 @@ paths:
   /insertparkiranemail:
     post:
       tags:
-        - Parkiran
+        - ParkiranEmail
       summary: Insert Data Parkiran with QR Code
       description: Insert private data and generate QR Code
       operationId: inputDataParkirWithQR
@@ -243,7 +248,7 @@ paths:
   /updateparkiranemail:
     put:
       tags:
-        - Parkiran
+        - ParkiranEmail
       summary: Update data User Khusus Admin
       description: Header auth for admin only
       operationId: UpdatedataParkir
@@ -270,7 +275,7 @@ paths:
   /deleteparkiranemail:
     delete:
       tags:
-        - Parkiran
+        - ParkiranEmail
       summary: Delete Data atau mereset
       description: Header auth for admin only
       operationId: DeleteDataParkir
