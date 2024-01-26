@@ -164,7 +164,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /updateparkirannpm:
+   /updateparkirannpm:
     put:
       tags:
         - parkirannpm
@@ -191,7 +191,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /deleteparkirannpm:
+   /deleteparkirannpm:
     delete:
       tags:
         - parkirannpm
@@ -218,7 +218,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-  /insertparkiranemail:
+ /insertparkiranemail:
     post:
       tags:
         - parkiranemail
