@@ -31,7 +31,7 @@ tags:
     externalDocs:
       description: Deskripsi dan Kode Program
       url: https://pakarbi.github.io/pakarbibackend
-  - name: Parkiran
+  - name: parkiranemail
     description: Pengelolaan Data Parkir User Email
     externalDocs:
       description: Deskripsi dan Kode Program
@@ -164,7 +164,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-   /updateparkirannpm:
+  /updateparkirannpm:
     put:
       tags:
         - parkirannpm
@@ -191,7 +191,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
-   /deleteparkirannpm:
+  /deleteparkirannpm:
     delete:
       tags:
         - parkirannpm
@@ -218,7 +218,7 @@ paths:
         - login:
           - write:apiKey
           - read:apiKey
- /insertparkiranemail:
+  /insertparkiranemail:
     post:
       tags:
         - parkiranemail
