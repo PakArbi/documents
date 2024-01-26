@@ -13,8 +13,8 @@ externalDocs:
   description: Website kami
   url: https://pakarbi.github.io
 servers:
-  - url: https://asia-southeast2-project3-403614.cloudfunctions.net/
   - url: https://asia-southeast2-pakarbi.cloudfunctions.net/
+  - url: https://asia-southeast2-project3-403614.cloudfunctions.net/
 tags:
   - name: auth
     description: Authentikasi
