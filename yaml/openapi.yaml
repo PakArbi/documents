@@ -36,7 +36,7 @@ paths:
     post:
       tags:
         - auth
-      summary: Register User
+      summary: Insert User
       description: Data user
       operationId: authService
       requestBody:
@@ -45,13 +45,12 @@ paths:
             schema:
               $ref: "#/components/schemas/User"
             example:
-              usernameid: "D4TI1214000"
-              username: "Pakarbi User"
-              npm: "1214000"
-              password: "pakarbipass"
-              passwordhash: "pakarbipass"
+              userid: "D3/D41214000"
+              username: "Pakarbi"
+              npm: 1214000
+              password: "123456"
+              confirmPassword: "123456"
               email: "1214000@std.ulbi.ac.id"
-              role: "user"
       responses:
         "200":
           description: Successful operation
@@ -60,24 +59,23 @@ paths:
               schema:
                 $ref: "#/components/schemas/Response"
               example:
-              usernameid: "D4TI1214000"
-              username: "Pakarbi User"
-              npm: "1214000"
-              password: "pakarbipass"
-              passwordhash: "pakarbipass"
-              email: "1214000@std.ulbi.ac.id"
-              role: "user"
+                userid: "D3/D41214000"
+                username: "Pakarbi"
+                npm: 1214000
+                password: "123456"
+                passwordhash: "123456"
+                email: "1214000@std.ulbi.ac.id"
         "405":
           description: Invalid input
       security:
         - login:
             - write:apiKey
             - read:apiKey
-  /loginpakarbinpm:
+  /loginpakarbinmp:
     post:
       tags:
         - auth
-      summary: Insert User NPM
+      summary: Insert User
       description: Data user
       operationId: authService
       requestBody:
@@ -87,7 +85,7 @@ paths:
               $ref: "#/components/schemas/User"
             example:
               npm: "1214000"
-              passwordhash: "pakarbipass"
+              password: "123456"
       responses:
         "200":
           description: Successful operation
@@ -105,7 +103,7 @@ paths:
     post:
       tags:
         - auth
-      summary: Insert User Email
+      summary: Insert User
       description: Data user
       operationId: authService
       requestBody:
@@ -115,7 +113,7 @@ paths:
               $ref: "#/components/schemas/User"
             example:
               email: "1214000@std.ulbi.ac.id"
-              passwordhash: "pakarbipass"
+              password: "123456"
       responses:
         "200":
           description: Successful operation
@@ -141,17 +139,6 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/Parkiran"
-            example:
-              parkiranid: "D41214020",
-              nama: "Farhan Rizki Maulana",
-              npm: "1214020",
-              prodi: "D4 Teknik Informatika",
-              namakendaraan: "Supra X 125",
-              nomorkendaraan: "F 1234 BGR",
-              jeniskendaraan: "Motor",
-              status: "Mahasiswa Aktif",
-              jammasuk: "08:00",
-              jamkeluar: "15:00"
       responses:
         "200":
           description: Successful operation
@@ -159,17 +146,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Parkiran"
-              example:
-              parkiranid: "D41214020",
-              nama: "Farhan Rizki Maulana",
-              npm: "1214020",
-              prodi: "D4 Teknik Informatika",
-              namakendaraan: "Supra X 125",
-              nomorkendaraan: "F 1234 BGR",
-              jeniskendaraan: "Motor",
-              status: "Mahasiswa Aktif",
-              jammasuk: "08:00",
-              jamkeluar: "15:00"
         "405":
           description: Invalid input
         "201":
